@@ -38,7 +38,7 @@ const styles = {
   sideBar:{
     float: 'left',
     height: '100vh',
-    width: '100px',
+    width: '11vh',
     display: 'flex',
     flexDirection: 'column',
     background:'#3d628f',

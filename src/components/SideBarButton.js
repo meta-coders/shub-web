@@ -5,7 +5,7 @@ import injectSheet from 'react-jss';
 const styles = {
   sideBarButton:{
     width:'100%',
-    height:'100px',
+    height:'11vh',
     display: 'flex',
     flexDirection: 'column',
     textDecoration: 'none',

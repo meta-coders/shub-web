@@ -7,7 +7,7 @@ const styles = {
   header: {
     background:'#7F94B5',
     width: '100%',
-    height: '100px',
+    height: '11vh',
     color: '#607896',
   },
   leftSide: {
@@ -23,7 +23,7 @@ const styles = {
     float: 'right',
     display: 'flex',
     flexDirection: 'row',
-    paddingRight: '100px'
+    paddingRight: '50px'
   },
   warning: {
     height: '50px',
