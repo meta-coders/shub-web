@@ -5,7 +5,7 @@ import SideBarButton from './SideBarButton'
 const buttons = [
   {
     pathname: '/',
-    src:'../icons/book.svg',
+    src:'../icons/shub.svg',
   },
   {
     pathname: '/',

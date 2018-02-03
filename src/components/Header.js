@@ -30,13 +30,17 @@ const styles = {
     paddingTop: '25px'
   },
   name: {
-    fontSize: '20px',
-    paddingTop: '40px',
+    fontSize: '2vw',
+    display: 'flex',
+    flexDirection:'column',
+    justifyContent: 'center',
     paddingRight: '15px',
   },
   message: {
-    fontSize: '20px',
-    paddingTop: '40px',
+    fontSize: '2vw',
+    display: 'flex',
+    flexDirection:'column',
+    justifyContent: 'center',
     paddingLeft: '15px',
   },
 }

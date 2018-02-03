@@ -18,6 +18,7 @@ const styles = {
       height:'37.5%',
       textAlign:'center',
       display: 'flex',
+      fontSize:'0.8vw',
       flexDirection: 'column',
       textDecoration: 'none',
       justifyContent: 'center',
