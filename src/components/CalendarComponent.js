@@ -12,15 +12,23 @@ const events = {
 
 const styles = {
   calendarContainer: {
-    boxShadow: '0 0 50px grey',
+    marginLeft:'2vw',
+    boxShadow: '0 0 10px #888',
     background: '#B1BBCC',
     display: 'flex',
     flexDirection: 'column',
+    '& ul':{
+      padding: '0',
+      margin: '0 5%',
+    }
   },
   list: {
+    borderRadius: '0.5vw',
+    background: '#607896',
+    padding:'5%',
     listStyle: 'none',
     marginTop: '20px',
-    fontSize: '30px'
+    fontSize: '3vh',
   },
 };
 
