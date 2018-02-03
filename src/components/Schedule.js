@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TimeTable from './TimeTable.js';
-import Calendar from './Calendar.js';
+import CalendarComponent from './CalendarComponent.js';
 
 class Schedule extends Component {
 
@@ -17,7 +17,7 @@ class Schedule extends Component {
     return (
       <div style={styles}>
         <TimeTable />
-        <Calendar />
+        <CalendarComponent />
       </div>
     );
   }
