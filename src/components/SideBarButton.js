@@ -9,14 +9,18 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     textDecoration: 'none',
+    justifyContent: 'center',
     '& img':{
       height:'50%',
     },
     '& span':{
       color:'#92a6c2',
       height:'37.5%',
-      paddingTop:'12.5%',
       textAlign:'center',
+      display: 'flex',
+      flexDirection: 'column',
+      textDecoration: 'none',
+      justifyContent: 'center',
     }
   }
 }

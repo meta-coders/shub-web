@@ -7,7 +7,7 @@ const styles = {
   header: {
     background:'#7F94B5',
     width: '100%',
-    height: '150px',
+    height: '100px',
     color: '#607896',
   },
   leftSide: {
@@ -26,17 +26,17 @@ const styles = {
     paddingRight: '100px'
   },
   warning: {
-    height: '75px',
-    paddingTop: '37.5px'
+    height: '50px',
+    paddingTop: '25px'
   },
   name: {
     fontSize: '20px',
-    paddingTop: '65px',
+    paddingTop: '40px',
     paddingRight: '15px',
   },
   message: {
     fontSize: '20px',
-    paddingTop: '65px',
+    paddingTop: '40px',
     paddingLeft: '15px',
   },
 }
