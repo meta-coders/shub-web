@@ -1,4 +1,11 @@
 import React, { Component } from 'react';
+import injectSheet from 'react-jss';
+
+const styles = {
+  sideBar:{
+    background:'#3d628f',
+  }
+}
 
 class SideBar extends Component {
 
@@ -12,4 +19,4 @@ class SideBar extends Component {
 
 }
 
-export default SideBar;
+export default injectSheet(styles)(SideBar);
