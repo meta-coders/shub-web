@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div>
         <SideBar />
-        <Header />
+        <Header name='Ivan Gnatiuk' message='Контрольна робота'/>
       </div>
     );
   }
