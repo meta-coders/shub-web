@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import injectSheet from 'react-jss';
-import SideBarButton from './SideBarButton'
+import SideBarButton from './SideBarButton';
+import { connect } from 'react-redux';
+
 
 const buttons = [
   {
@@ -51,7 +53,21 @@ class SideBar extends Component {
     return (
       <div className={classes.sideBar}>
         {buttons.map(
-          ({pathname, name, src}) => <SideBarButton className={classes.sideBarButton} key={name} pathname={pathname} name={name} src={src}/>)
+          ({pathname, name, src}) =>
+          {if(localStorage.getItem('sessionId')!=='false'){
+            console.log('true');
+            return <SideBarButton
+            className={classes.sideBarButton}
+            key={name}
+            pathname={pathname}
+            name={name}
+            src={src}/>
+          } else {
+            console.log('false');
+            return <Fragment/>
+          }
+          }
+          )
         }
       </div>
     );
@@ -59,4 +75,9 @@ class SideBar extends Component {
 
 }
 
-export default injectSheet(styles)(SideBar);
+export default connect(
+  state => ({
+    sessionId: state.sessionInfo.sessionId,
+  }),
+  () => ({})
+)(injectSheet(styles)(SideBar));

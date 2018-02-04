@@ -1,5 +1,4 @@
-const initialState =  [
-    ];
+const initialState =  [];
 
 export default (state = initialState, action) => {
   if (action.type === 'FETCH_EVENT_POST') {

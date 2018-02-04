@@ -1,7 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import injectSheet from 'react-jss';
 import user from '../icons/user.svg';
 import warning from '../icons/warning.svg';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import Actions from '../actions/index';
+
+const logOutAction = Actions.logOutAction;
 
 const styles = {
   header: {
@@ -31,15 +36,18 @@ const styles = {
     height: '75%',
     margin: 'auto'
   },
+  singIn:{
+    height: '100%',
+  },
   name: {
-    fontSize: '2vw',
+    fontSize: '1.5vw',
     display: 'flex',
     flexDirection:'column',
     justifyContent: 'center',
     paddingRight: '5%',
   },
   message: {
-    fontSize: '2vw',
+    fontSize: '1.5vw',
     display: 'flex',
     flexDirection:'column',
     justifyContent: 'center',
@@ -55,18 +63,29 @@ class Header extends Component {
       message: this.props.message,
     };
   }
+  componentDidMount() {
+    this.props.onHeaderDidMount()
+  }
+  handleLogOut = () => {
+    this.props.onLogOutClick(this.props.sessionInfo.sessionId)
+  }
 
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.header}>
         <div className={classes.leftSide}>
-          <img className={classes.warning} src={warning} />
-          <span className={classes.message}>{this.state.message}</span>
+          {localStorage.getItem('sessionId')!=='false'?<img className={classes.warning} src={warning}/>:<Fragment/>}
+          <span className={classes.message}>{localStorage.getItem('sessionId')!=='false'?this.state.message:''}</span>
         </div>
         <div className={classes.rightSide}>
-          <span className={classes.name}>{this.state.name}</span>
-          <img className={classes.warning} src={user} />
+          <span className={classes.name}>{this.props.name}</span>
+          <Link
+            to={{ pathname: '/login' }}
+            className={classes.warning}
+          >
+            <img className={classes.singIn} src={user} onClick={this.handleLogOut} />
+          </Link>
         </div>
       </div>
     );
@@ -74,4 +93,15 @@ class Header extends Component {
 
 }
 
-export default injectSheet(styles)(Header);
+export default connect(
+  state => ({
+    name: state.sessionInfo.name,
+    sessionInfo: state.sessionInfo,
+  }),
+  dispatch => ({
+    onHeaderDidMount:() => dispatch({type:'RENDER_PAGE'}),
+    onLogOutClick: (sessionId) => {
+      dispatch(logOutAction(sessionId));
+    },
+  })
+)(injectSheet(styles)(Header));

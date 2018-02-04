@@ -67,7 +67,7 @@ class CalendarComponent extends Component {
   }
 
   componentDidMount() {
-    this.props.onCalendarComponentDidMount('699b8469cf9c96b10f54068a827e9c0d')
+    this.props.onCalendarComponentDidMount(localStorage.getItem('sessionId'))
   }
 
   onChange = date => {
@@ -112,6 +112,7 @@ class CalendarComponent extends Component {
 
 export default connect(
   state => ({
+    sessionId: state.sessionInfo.sessionId,
     events: state.events,
   }),
   dispatch => ({

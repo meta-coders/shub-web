@@ -155,12 +155,6 @@ class LoginForm extends React.Component {
             </button>
           </div>
         </div>
-        <Link
-          className={classes.linkStyle}
-          to={{ pathname: '/registration' }}
-        >
-          You have no account registrated?
-        </Link>
       </div>
     );
   }

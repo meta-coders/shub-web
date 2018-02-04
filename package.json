@@ -35,6 +35,12 @@
     },
     "/api/getEvents": {
       "target": "http://10.1.49.131:3000"
+    },
+    "/auth/login": {
+      "target": "http://10.1.49.131:3000"
+    },
+    "/auth/logout": {
+      "target": "http://10.1.49.131:3000"
     }
 
   }
