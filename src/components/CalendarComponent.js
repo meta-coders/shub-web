@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import injectSheet from 'react-jss';
+import { connect } from 'react-redux';
 import Calendar from 'react-calendar/dist/entry.nostyle';
 import calendarStyle from './CalendarStyle.css';
+import Actions from '../actions/index';
 
-const events = {
-  id: [],
-  date: '',
-  description: '',
-  class_id: 0,
-};
+const eventsAction = Actions.eventsAction;
+
 
 const styles = {
   calendarContainer: {
     marginLeft:'2vw',
+    height:'70vh',
     boxShadow: '0 0 10px #888',
     background: '#B1BBCC',
     display: 'flex',
@@ -23,39 +22,52 @@ const styles = {
     }
   },
   list: {
+    display: 'grid',
+    gridTemplateColumns: '2fr 5fr',
     borderRadius: '0.5vw',
-    background: '#607896',
     padding:'5%',
     listStyle: 'none',
     marginTop: '20px',
-    fontSize: '3vh',
+    fontSize: '2vh',
+    color:'#607896',
+    '& div':{
+      marginRight:'2vw',
+      display:'flex',
+      flexDirection:'row',
+      justifyContent:'flex-start',
+    }
   },
+  events: {
+    overflow:'scroll',
+  }
 };
+
+const numbToMonth = (numb) => {
+  let month = new Array();
+  month[0] = "Jan";
+  month[1] = "Feb";
+  month[2] = "Mar";
+  month[3] = "Apr";
+  month[4] = "May";
+  month[5] = "Jun";
+  month[6] = "Jul";
+  month[7] = "Aug";
+  month[8] = "Sepr";
+  month[9] = "Oct";
+  month[10] = "Nov";
+  month[11] = "Dec";
+  let n = month[numb];
+  return n;
+}
 
 class CalendarComponent extends Component {
   state = {
     date: new Date(),
-    events: [
-      {
-        id: 0,
-        date: '2018-02-01',
-        description: '1 event',
-        class_id: 0,
-      },
-      {
-        id: 1,
-        date: '2018-01-05',
-        description: '2 event',
-        class_id: 0,
-      },
-      {
-        id: 2,
-        date: '2018-01-23',
-        description: '3 event',
-        class_id: 0,
-      },
-    ],
-    month: '',
+    month: numbToMonth((new Date().getMonth())),
+  }
+
+  componentDidMount() {
+    this.props.onCalendarComponentDidMount('699b8469cf9c96b10f54068a827e9c0d')
   }
 
   onChange = date => {
@@ -69,25 +81,28 @@ class CalendarComponent extends Component {
 
   renderEvents = obj => {
     if(new Date(obj.date).toString().split(' ')[1] === this.state.month) {
-      return <li className={this.props.classes.list}>{obj.description}</li>
+      return <li className={this.props.classes.list}>
+        <div>{obj.date.split('-').join(' ')}</div>
+        <div>{obj.description}</div>
+      </li>
     }
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, events } = this.props;
     return (
       <div className={classes.calendarContainer}>
         <Calendar
           style={calendarStyle}
           onChange={this.onChange}
-          onMonthClick={this.onMonthChange}
+          onMonthClick={(value) => console.log('hi')}
           onActiveDateChange={this.onMonthChange}
           onClickDay={(value) => this.setState({date: value})}
           value={this.state.date}
         />
-        <div>
+        <div className={classes.events}>
           <ul>
-            {this.state.events.map(this.renderEvents)}
+            {events.map(this.renderEvents)}
           </ul>
         </div>
       </div>
@@ -95,4 +110,13 @@ class CalendarComponent extends Component {
   }
 }
 
-export default injectSheet(styles)(CalendarComponent);
+export default connect(
+  state => ({
+    events: state.events,
+  }),
+  dispatch => ({
+    onCalendarComponentDidMount: (sessionId) => {
+      dispatch(eventsAction(sessionId));
+    },
+  })
+)(injectSheet(styles)(CalendarComponent));

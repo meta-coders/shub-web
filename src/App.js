@@ -23,7 +23,6 @@ class App extends Component {
           <Route exact path="/registration" component={RegistrationForm} />
           <Route path="/" component={Schedule} />
         </Switch>
-
       </div>
     );
   }

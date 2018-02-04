@@ -1,7 +1,8 @@
-const initialState =  [];
+const initialState =  [
+    ];
 
 export default (state = initialState, action) => {
-  if (action.type === 'POST_EVENT') {
+  if (action.type === 'FETCH_EVENT_POST') {
     return action.data;
   }
   return state;

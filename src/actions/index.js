@@ -117,7 +117,36 @@ const Actions = {
       result => (dispatch(result))
     );
   },
+  eventsAction: (sessionId) => (dispatch) => {
+    console.log('eventsAction' + sessionId);
 
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    const myInit = {
+      method: 'POST',
+      body: JSON.stringify({
+        sessionId,
+      }),
+      headers,
+    };
+
+    fetch('/api/getEvents', myInit).then((response) => {
+      console.log('Fetch');
+      return response.json();
+    }).then(
+      (result) => {
+        console.log(result);
+        const data = result;
+        const dispatchObj = {
+          type: 'FETCH_EVENT_POST',
+          data,
+        };
+        console.log(dispatchObj);
+        dispatch(dispatchObj);
+      }
+    ).catch(err => console.log(err));
+  },
 
   // signInAction: (nickname, password) => (dispatch) => {
   //
