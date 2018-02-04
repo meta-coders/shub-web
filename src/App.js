@@ -8,24 +8,32 @@ import Schedule from './components/Schedule';
 import SideBar from './components/SideBar';
 import Marks from './components/Marks.js';
 import Header from './components/Header';
+import Admin from './Admin/components/Admin';
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <SideBar />
-        <Header name='Ivan Gnatiuk' message='Контрольна робота'/>
-        <Switch>
-          <Route exact path="/homework" component={Homework} />
-          <Route exact path="/marks" cpmponent={Marks} />
-          <Route exact path="/teachers" component={Teachers} />
-          <Route exact path="/login" component={LoginForm} />
-          <Route exact path="/registration" component={RegistrationForm} />
-          <Route path="/" component={Schedule} />
-        </Switch>
-      </div>
+      <Switch>
+        <Route exact path="/admin" component={Admin} />
+        <Route path="/" component={Front} />
+      </Switch>
     );
   }
 }
+
+const Front = () => (
+  <div>
+    <SideBar />
+    <Header name='Ivan Gnatiuk' message='Контрольна робота'/>
+    <Switch>
+      <Route exact path="/homework" component={Homework} />
+      <Route exact path="/marks" cpmponent={Marks} />
+      <Route exact path="/teachers" component={Teachers} />
+      <Route exact path="/login" component={LoginForm} />
+      <Route exact path="/registration" component={RegistrationForm} />
+      <Route path="/" component={Schedule} />
+    </Switch>
+  </div>
+);
 
 export default App;
