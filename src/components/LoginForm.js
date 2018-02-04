@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Actions from '../actions/index';
+import { withRouter, Redirect } from 'react-router-dom';
+
 
 const signInAction = Actions.signInAction;
 
@@ -155,6 +157,8 @@ class LoginForm extends React.Component {
             </button>
           </div>
         </div>
+        {console.log(' : : '+localStorage.getItem('sessionId'))}
+        {localStorage.getItem('sessionId')!=='false' ? <Redirect to={{ pathname: '/' }} /> : <Fragment />}
       </div>
     );
   }
@@ -167,7 +171,10 @@ LoginForm.propTypes = {
 };
 
 export default connect(
-  () => ({}),
+  state => ({
+    name: state.sessionInfo.name,
+    sessionInfo: state.sessionInfo,
+  }),
   dispatch => ({
     onSignInClick: (nickname, password) => {
       dispatch(signInAction(nickname, password));
