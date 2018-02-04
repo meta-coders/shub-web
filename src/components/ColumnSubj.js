@@ -42,18 +42,15 @@ const structCells = (data=[], max) => {
   for(let i=0; i<max; i++) {
     if(data[j]){
       if(i===(parseInt(data[j].lesson)-1)){
-        console.log('Norm: '+data[j].lesson);
         res.push(data[j]);
         j++;
       } else {
-        console.log('Ne Norm: '+data[j].lesson);
         res.push({});
       }
     } else {
       res.push({})
     }
   }
-  console.log(res);
   return res
 }
 
