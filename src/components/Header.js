@@ -13,35 +13,37 @@ const styles = {
   leftSide: {
     height: 'inherit',
     float: 'left',
+    width: '20%',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingLeft: '50px',
+    paddingLeft: '4vw',
   },
   rightSide: {
     height: 'inherit',
     float: 'right',
+    width: '20%',
     display: 'flex',
     flexDirection: 'row',
-    paddingRight: '50px'
+    paddingRight: '4vw'
   },
   warning: {
-    height: '50px',
-    paddingTop: '25px'
+    height: '75%',
+    margin: 'auto'
   },
   name: {
     fontSize: '2vw',
     display: 'flex',
     flexDirection:'column',
     justifyContent: 'center',
-    paddingRight: '15px',
+    paddingRight: '5%',
   },
   message: {
     fontSize: '2vw',
     display: 'flex',
     flexDirection:'column',
     justifyContent: 'center',
-    paddingLeft: '15px',
+    paddingLeft: '5%',
   },
 }
 
