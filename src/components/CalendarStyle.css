@@ -37,6 +37,8 @@
 }
 .react-calendar__navigation button:not([disabled]):hover,
 .react-calendar__navigation button:not([disabled]):focus {
+  opacity: 0.9;
+  transition: 0.2ms;
   background-color: #2A4872;
   color: white;
 }

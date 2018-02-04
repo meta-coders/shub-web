@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import injectSheet from 'react-jss';
 const styles = {
   sideBarButton:{
@@ -22,7 +23,8 @@ const styles = {
       textDecoration: 'none',
       justifyContent: 'center',
     }
-  }
+  },
+
 }
 
 class SideBarButton extends Component {

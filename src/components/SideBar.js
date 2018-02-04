@@ -44,6 +44,12 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     background:'#3d628f',
+    '& :hover':{
+      background:'#50AF80',
+      '& span':{
+        color:'white',
+      }
+    },
   },
 }
 
