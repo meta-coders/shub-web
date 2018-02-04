@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:3000/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+    <link rel="manifest" href="http://localhost:3000/manifest.json">
+    <link rel="shortcut icon" href="http://localhost:3000/favicon.ico">
+    <!--
+      Notice the use of  in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Study hub</title>
+  <style type="text/css">@import url(https://fonts.googleapis.com/css?family=Comfortaa);</style><style type="text/css">body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Comfortaa';
+}
+</style><style type="text/css">.react-calendar {
+  margin: 0 auto;
+  max-width: 100%;
+  background: inherit;
+  border: none;
+  font-family: inherit;
+  line-height: 3vw;
+}
+.react-calendar,
+.react-calendar *,
+.react-calendar *:before,
+.react-calendar *:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.react-calendar button {
+  border: 0;
+  outline: none;
+}
+.react-calendar button:not([disabled]):hover {
+  cursor: pointer;
+}
+.react-calendar__navigation {
+  margin-bottom: 1vw;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+}
+.react-calendar__navigation__label {
+  text-transform: capitalize;
+}
+.react-calendar__navigation button {
+  background: none;
+  font-size: 2vw;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+}
+.react-calendar__navigation button:not([disabled]):hover,
+.react-calendar__navigation button:not([disabled]):focus {
+  background-color: #2A4872;
+  color: white;
+}
+.react-calendar__navigation button[disabled] {
+  background-color: #2A4872;
+  color: white;
+}
+.react-calendar__month-view__days > button {
+  font-size: 1vw;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+}
+.react-calendar__month-view__weekdays {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+  font-size: 1vw;
+}
+.react-calendar__month-view__weekdays__weekday {
+}
+.react-calendar__month-view__weekNumbers {
+  font-weight: bold;
+}
+.react-calendar__month-view__weekNumbers .react-calendar__tile {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+  font-size: 1vw;
+}
+.react-calendar__month-view__days__day--weekend {
+  color: red;
+}
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: #2A4872;
+}
+.react-calendar__year-view .react-calendar__tile,
+.react-calendar__decade-view .react-calendar__tile,
+.react-calendar__century-view .react-calendar__tile {
+}
+.react-calendar__tile {
+  max-width: 100%;
+  text-align: center;
+  background: none;
+}
+button.react-calendar__tile[disabled] {
+  background-color: #2A4872;
+  color: white;
+}
+button.react-calendar__tile:not([disabled]):hover,
+button.react-calendar__tile:not([disabled]):focus {
+  background-color: #2A4872;
+  color: white;
+}
+.react-calendar__tile--hasActive {
+  background: #2A4872;
+  color: white;
+}
+button.react-calendar__tile--hasActive:not([disabled]):hover,
+button.react-calendar__tile--hasActive:not([disabled]):focus {
+  background: #2A4872;
+  color: white;
+}
+.react-calendar__tile--active {
+  background: #2A4872;
+  color: white;
+}
+button.react-calendar__tile--active:not([disabled]):hover,
+button.react-calendar__tile--active:not([disabled]):focus {
+  background: #2A4872;
+  color: white;
+}
+.react-calendar--selectRange .react-calendar__tile--hover {
+  background-color: #2A4872;
+}
+</style><style type="text/css" data-jss="" data-meta="CalendarComponent, Unthemed, Static">
+.CalendarComponent-calendarContainer-0-1-20 {
+  display: flex;
+  box-shadow: 0 0 10px #888;
+  background: #B1BBCC;
+  margin-left: 2vw;
+  flex-direction: column;
+}
+.CalendarComponent-calendarContainer-0-1-20 ul {
+  margin: 0 5%;
+  padding: 0;
+}
+.CalendarComponent-list-0-1-21 {
+  padding: 5%;
+  font-size: 3vh;
+  background: #607896;
+  list-style: none;
+  margin-top: 20px;
+  border-radius: 0.5vw;
+}
+.CalendarComponent-events-0-1-22 {
+  overflow: scroll;
+}
+</style><style type="text/css" data-jss="" data-meta="Column, Unthemed, Static">
+.Column-column-0-1-10 {
+  display: flex;
+  flex-direction: column;
+}
+.Column-column-0-1-10 > div:first-child {
+  z-index: 10;
+  position: relative;
+  background: #7F94B5;
+  box-shadow: 0px 15px 10px -15px #777;
+}
+.Column-cell1-0-1-11 {
+  height: 7vh;
+  display: flex;
+  background: #93A1B6;
+  text-align: center;
+  border-right: 1px solid #93A1B6;
+  flex-direction: column;
+  justify-content: center;
+}
+.Column-cell1-0-1-11 img {
+  height: 5vh;
+}
+.Column-cell2-0-1-12 {
+  height: 7vh;
+  display: flex;
+  background: #B1BBCC;
+  text-align: center;
+  border-right: 1px solid #93A1B6;
+  flex-direction: column;
+  justify-content: center;
+}
+.Column-time-0-1-13 {
+  font-size: 0.8vw;
+}
+.Column-id-0-1-14 {
+  font-size: 2vw;
+}
+</style><style type="text/css" data-jss="" data-meta="ColumnSubj, Unthemed, Static">
+.ColumnSubj-column-0-1-15 {
+  display: flex;
+  flex-direction: column;
+}
+.ColumnSubj-column-0-1-15 > div:first-child {
+  z-index: 10;
+  position: relative;
+  background: #7F94B5;
+  box-shadow: 0px 3px 5px -3px #777;
+}
+.ColumnSubj-cell1-0-1-16 {
+  height: 7vh;
+  display: flex;
+  font-size: 1.5vw;
+  background: #93A1B6;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.ColumnSubj-cell2-0-1-17 {
+  height: 7vh;
+  display: flex;
+  font-size: 1.5vw;
+  background: #B1BBCC;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.ColumnSubj-time-0-1-18 {
+  font-size: 0.8vw;
+}
+.ColumnSubj-id-0-1-19 {
+  font-size: 1vw;
+}
+</style><style type="text/css" data-jss="" data-meta="TimeTable, Unthemed, Static">
+.TimeTable-timetable-0-1-9 {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 2fr;
+}
+.TimeTable-timetable-0-1-9 * {
+  color: #3d628f;
+}
+</style><style type="text/css" data-jss="" data-meta="SideBarButton, Unthemed, Static">
+.SideBarButton-sideBarButton-0-1-2 {
+  width: 100%;
+  height: 11vh;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  justify-content: center;
+}
+.SideBarButton-sideBarButton-0-1-2 img {
+  height: 50%;
+}
+.SideBarButton-sideBarButton-0-1-2 span {
+  color: #92a6c2;
+  height: 37.5%;
+  display: flex;
+  font-size: 0.8vw;
+  text-align: center;
+  flex-direction: column;
+  text-decoration: none;
+  justify-content: center;
+}
+</style><style type="text/css" data-jss="" data-meta="SideBar, Unthemed, Static">
+.SideBar-sideBar-0-1-1 {
+  float: left;
+  width: 6vw;
+  height: 100vh;
+  display: flex;
+  background: #3d628f;
+  flex-direction: column;
+}
+</style><style type="text/css" data-jss="" data-meta="Header, Unthemed, Static">
+.Header-header-0-1-3 {
+  width: 100%;
+  color: #607896;
+  height: 11vh;
+  background: #7F94B5;
+}
+.Header-leftSide-0-1-4 {
+  float: left;
+  width: 20%;
+  height: inherit;
+  display: flex;
+  padding-left: 4vw;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.Header-rightSide-0-1-5 {
+  float: right;
+  width: 20%;
+  height: inherit;
+  display: flex;
+  padding-right: 4vw;
+  flex-direction: row;
+}
+.Header-warning-0-1-6 {
+  height: 75%;
+  margin: auto;
+}
+.Header-name-0-1-7 {
+  display: flex;
+  font-size: 2vw;
+  padding-right: 5%;
+  flex-direction: column;
+  justify-content: center;
+}
+.Header-message-0-1-8 {
+  display: flex;
+  font-size: 2vw;
+  padding-left: 5%;
+  flex-direction: column;
+  justify-content: center;
+}
+</style></head>
+  <body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <div id="root"><div><div class="SideBar-sideBar-0-1-1"><a class="SideBarButton-sideBarButton-0-1-2" href="http://localhost:3000/"><img src="./Study hub_files/shub.svg"></a><a class="SideBarButton-sideBarButton-0-1-2" href="http://localhost:3000/"><img src="./Study hub_files/calendar.svg"><span>Розклад</span></a><a class="SideBarButton-sideBarButton-0-1-2" href="http://localhost:3000/homework"><img src="./Study hub_files/notebook.svg"><span>ДЗ</span></a><a class="SideBarButton-sideBarButton-0-1-2" href="http://localhost:3000/teachers"><img src="./Study hub_files/team.svg"><span>Вчителі</span></a><a class="SideBarButton-sideBarButton-0-1-2" href="http://localhost:3000/marks"><img src="./Study hub_files/star.svg"><span>Оцінки</span></a><a class="SideBarButton-sideBarButton-0-1-2" href="http://localhost:3000/stuff"><img src="./Study hub_files/notepad.svg"><span>Навчальни Материалы</span></a></div><div class="Header-header-0-1-3"><div class="Header-leftSide-0-1-4"><img class="Header-warning-0-1-6" src="./Study hub_files/warning.467021ed.svg"><span class="Header-message-0-1-8">Контрольна робота</span></div><div class="Header-rightSide-0-1-5"><span class="Header-name-0-1-7">Ivan Gnatiuk</span><img class="Header-warning-0-1-6" src="./Study hub_files/user.ff80dd74.svg"></div></div><div style="background-color: rgb(197, 208, 217); height: 89vh; padding: 6vh 2vw; box-sizing: border-box; display: grid; grid-template-columns: 2fr 1fr;"><div class="TimeTable-timetable-0-1-9"><div class="Column-column-0-1-10"><div class="Column-cell1-0-1-11"><img src="./Study hub_files/clock.652a9d6e.svg"></div><div class="Column-cell2-0-1-12"><div class="Column-id-0-1-14">1</div><div class="Column-time-0-1-13">08:00-08:45</div></div><div class="Column-cell1-0-1-11"><div class="Column-id-0-1-14">2</div><div class="Column-time-0-1-13">08:55-09:40</div></div><div class="Column-cell2-0-1-12"><div class="Column-id-0-1-14">3</div><div class="Column-time-0-1-13">09:50-10:35</div></div><div class="Column-cell1-0-1-11"><div class="Column-id-0-1-14">4</div><div class="Column-time-0-1-13">10:55-11:40</div></div><div class="Column-cell2-0-1-12"><div class="Column-id-0-1-14">5</div><div class="Column-time-0-1-13">11:55-12:30</div></div><div class="Column-cell1-0-1-11"><div class="Column-id-0-1-14">6</div><div class="Column-time-0-1-13">12:45-13:30</div></div><div class="Column-cell2-0-1-12"><div class="Column-id-0-1-14">7</div><div class="Column-time-0-1-13">13:50-14:35</div></div></div><div class="ColumnSubj-column-0-1-15"><div class="ColumnSubj-cell1-0-1-16">Понеділок</div><div class="ColumnSubj-cell2-0-1-17"><div class="ColumnSubj-id-0-1-19">Математика</div><div class="ColumnSubj-time-0-1-18">Петровіч О.В.</div><div class="ColumnSubj-time-0-1-18">100</div></div><div class="ColumnSubj-cell1-0-1-16"><div class="ColumnSubj-id-0-1-19">Англ. Мова</div><div class="ColumnSubj-time-0-1-18">Генадівнічівна І.І.</div><div class="ColumnSubj-time-0-1-18">101</div></div><div class="ColumnSubj-cell2-0-1-17"><div class="ColumnSubj-id-0-1-19">Укр. Мова</div><div class="ColumnSubj-time-0-1-18">Довгополючка Р.Р.</div><div class="ColumnSubj-time-0-1-18">102</div></div><div class="ColumnSubj-cell1-0-1-16"><div class="ColumnSubj-id-0-1-19">Інформатика</div><div class="ColumnSubj-time-0-1-18">Кувічка М.Е.</div><div class="ColumnSubj-time-0-1-18">103</div></div><div class="ColumnSubj-cell2-0-1-17"><div class="ColumnSubj-id-0-1-19">Економіка</div><div class="ColumnSubj-time-0-1-18">Мачехін М.М.</div><div class="ColumnSubj-time-0-1-18">104</div></div><div class="ColumnSubj-cell1-0-1-16"><div class="ColumnSubj-id-0-1-19">Фізра</div><div class="ColumnSubj-time-0-1-18">Фізрук Е.Ю.</div><div class="ColumnSubj-time-0-1-18">105</div></div><div class="ColumnSubj-cell2-0-1-17"><div class="ColumnSubj-id-0-1-19">Історія</div><div class="ColumnSubj-time-0-1-18">Шевчук Х.Т.</div><div class="ColumnSubj-time-0-1-18">106</div></div></div><div class="ColumnSubj-column-0-1-15"><div class="ColumnSubj-cell1-0-1-16">Вівторок</div><div class="ColumnSubj-cell2-0-1-17"><div class="ColumnSubj-id-0-1-19">Математика</div><div class="ColumnSubj-time-0-1-18">Петровіч О.В.</div><div class="ColumnSubj-time-0-1-18">200</div></div><div class="ColumnSubj-cell1-0-1-16"><div class="ColumnSubj-id-0-1-19">Англ. Мова</div><div class="ColumnSubj-time-0-1-18">Генадівнічівна І.І.</div><div class="ColumnSubj-time-0-1-18">201</div></div><div class="ColumnSubj-cell2-0-1-17"><div class="ColumnSubj-id-0-1-19">Укр. Мова</div><div class="ColumnSubj-time-0-1-18">Довгополючка Р.Р.</div><div class="ColumnSubj-time-0-1-18">202</div></div><div class="ColumnSubj-cell1-0-1-16"><div class="ColumnSubj-id-0-1-19">Інформатика</div><div class="ColumnSubj-time-0-1-18">Кувічка М.Е.</div><div class="ColumnSubj-time-0-1-18">203</div></div><div class="ColumnSubj-cell2-0-1-17"><div class="ColumnSubj-id-0-1-19">Економіка</div><div class="ColumnSubj-time-0-1-18">Мачехін М.М.</div><div class="ColumnSubj-time-0-1-18">204</div></div><div class="ColumnSubj-cell1-0-1-16"><div class="ColumnSubj-id-0-1-19">Фізра</div><div class="ColumnSubj-time-0-1-18">Фізрук Е.Ю.</div><div class="ColumnSubj-time-0-1-18">205</div></div><div class="ColumnSubj-cell2-0-1-17"><div class="ColumnSubj-id-0-1-19">Історія</div><div class="ColumnSubj-time-0-1-18">Шевчук Х.Т.</div><div class="ColumnSubj-time-0-1-18">206</div></div></div><div class="ColumnSubj-column-0-1-15"><div class="ColumnSubj-cell1-0-1-16">Середа</div><div class="ColumnSubj-cell2-0-1-17"><div class="ColumnSubj-id-0-1-19">Математика</div><div class="ColumnSubj-time-0-1-18">Петровіч О.В.</div><div class="ColumnSubj-time-0-1-18">300</div></div><div class="ColumnSubj-cell1-0-1-16"><div class="ColumnSubj-id-0-1-19">Англ. Мова</div><div class="ColumnSubj-time-0-1-18">Генадівнічівна І.І.</div><div class="ColumnSubj-time-0-1-18">301</div></div><div class="ColumnSubj-cell2-0-1-17"><div class="ColumnSubj-id-0-1-19">Укр. Мова</div><div class="ColumnSubj-time-0-1-18">Довгополючка Р.Р.</div><div class="ColumnSubj-time-0-1-18">302</div></div><div class="ColumnSubj-cell1-0-1-16"><div class="ColumnSubj-id-0-1-19">Інформатика</div><div class="ColumnSubj-time-0-1-18">Кувічка М.Е.</div><div class="ColumnSubj-time-0-1-18">303</div></div><div class="ColumnSubj-cell2-0-1-17"><div class="ColumnSubj-id-0-1-19">Економіка</div><div class="ColumnSubj-time-0-1-18">Мачехін М.М.</div><div class="ColumnSubj-time-0-1-18">304</div></div><div class="ColumnSubj-cell1-0-1-16"><div class="ColumnSubj-id-0-1-19">Фізра</div><div class="ColumnSubj-time-0-1-18">Фізрук Е.Ю.</div><div class="ColumnSubj-time-0-1-18">305</div></div><div class="ColumnSubj-cell2-0-1-17"><div class="ColumnSubj-id-0-1-19">Історія</div><div class="ColumnSubj-time-0-1-18">Шевчук Х.Т.</div><div class="ColumnSubj-time-0-1-18">306</div></div></div><div class="ColumnSubj-column-0-1-15"><div class="ColumnSubj-cell1-0-1-16">Четверг</div><div class="ColumnSubj-cell2-0-1-17"><div class="ColumnSubj-id-0-1-19">Математика</div><div class="ColumnSubj-time-0-1-18">Петровіч О.В.</div><div class="ColumnSubj-time-0-1-18">400</div></div><div class="ColumnSubj-cell1-0-1-16"><div class="ColumnSubj-id-0-1-19">Англ. Мова</div><div class="ColumnSubj-time-0-1-18">Генадівнічівна І.І.</div><div class="ColumnSubj-time-0-1-18">401</div></div><div class="ColumnSubj-cell2-0-1-17"><div class="ColumnSubj-id-0-1-19">Укр. Мова</div><div class="ColumnSubj-time-0-1-18">Довгополючка Р.Р.</div><div class="ColumnSubj-time-0-1-18">402</div></div><div class="ColumnSubj-cell1-0-1-16"><div class="ColumnSubj-id-0-1-19">Інформатика</div><div class="ColumnSubj-time-0-1-18">Кувічка М.Е.</div><div class="ColumnSubj-time-0-1-18">403</div></div><div class="ColumnSubj-cell2-0-1-17"><div class="ColumnSubj-id-0-1-19">Економіка</div><div class="ColumnSubj-time-0-1-18">Мачехін М.М.</div><div class="ColumnSubj-time-0-1-18">404</div></div><div class="ColumnSubj-cell1-0-1-16"><div class="ColumnSubj-id-0-1-19">Фізра</div><div class="ColumnSubj-time-0-1-18">Фізрук Е.Ю.</div><div class="ColumnSubj-time-0-1-18">405</div></div><div class="ColumnSubj-cell2-0-1-17"><div class="ColumnSubj-id-0-1-19">Історія</div><div class="ColumnSubj-time-0-1-18">Шевчук Х.Т.</div><div class="ColumnSubj-time-0-1-18">406</div></div></div><div class="ColumnSubj-column-0-1-15"><div class="ColumnSubj-cell1-0-1-16">П`ятниця</div><div class="ColumnSubj-cell2-0-1-17"><div class="ColumnSubj-id-0-1-19">Математика</div><div class="ColumnSubj-time-0-1-18">Петровіч О.В.</div><div class="ColumnSubj-time-0-1-18">500</div></div><div class="ColumnSubj-cell1-0-1-16"><div class="ColumnSubj-id-0-1-19">Англ. Мова</div><div class="ColumnSubj-time-0-1-18">Генадівнічівна І.І.</div><div class="ColumnSubj-time-0-1-18">501</div></div><div class="ColumnSubj-cell2-0-1-17"><div class="ColumnSubj-id-0-1-19">Укр. Мова</div><div class="ColumnSubj-time-0-1-18">Довгополючка Р.Р.</div><div class="ColumnSubj-time-0-1-18">502</div></div><div class="ColumnSubj-cell1-0-1-16"><div class="ColumnSubj-id-0-1-19">Інформатика</div><div class="ColumnSubj-time-0-1-18">Кувічка М.Е.</div><div class="ColumnSubj-time-0-1-18">503</div></div><div class="ColumnSubj-cell2-0-1-17"><div class="ColumnSubj-id-0-1-19">Економіка</div><div class="ColumnSubj-time-0-1-18">Мачехін М.М.</div><div class="ColumnSubj-time-0-1-18">504</div></div><div class="ColumnSubj-cell1-0-1-16"><div class="ColumnSubj-id-0-1-19">Фізра</div><div class="ColumnSubj-time-0-1-18">Фізрук Е.Ю.</div><div class="ColumnSubj-time-0-1-18">505</div></div><div class="ColumnSubj-cell2-0-1-17"><div class="ColumnSubj-id-0-1-19">Історія</div><div class="ColumnSubj-time-0-1-18">Шевчук Х.Т.</div><div class="ColumnSubj-time-0-1-18">506</div></div></div><div class="ColumnSubj-column-0-1-15"><div class="ColumnSubj-cell1-0-1-16">Суббота</div><div class="ColumnSubj-cell2-0-1-17"><div class="ColumnSubj-id-0-1-19">Математика</div><div class="ColumnSubj-time-0-1-18">Петровіч О.В.</div><div class="ColumnSubj-time-0-1-18">600</div></div><div class="ColumnSubj-cell1-0-1-16"><div class="ColumnSubj-id-0-1-19">Англ. Мова</div><div class="ColumnSubj-time-0-1-18">Генадівнічівна І.І.</div><div class="ColumnSubj-time-0-1-18">601</div></div><div class="ColumnSubj-cell2-0-1-17"><div class="ColumnSubj-id-0-1-19">Укр. Мова</div><div class="ColumnSubj-time-0-1-18">Довгополючка Р.Р.</div><div class="ColumnSubj-time-0-1-18">602</div></div><div class="ColumnSubj-cell1-0-1-16"><div class="ColumnSubj-id-0-1-19">Інформатика</div><div class="ColumnSubj-time-0-1-18">Кувічка М.Е.</div><div class="ColumnSubj-time-0-1-18">603</div></div><div class="ColumnSubj-cell2-0-1-17"><div class="ColumnSubj-id-0-1-19">Економіка</div><div class="ColumnSubj-time-0-1-18">Мачехін М.М.</div><div class="ColumnSubj-time-0-1-18">604</div></div><div class="ColumnSubj-cell1-0-1-16"><div class="ColumnSubj-id-0-1-19">Фізра</div><div class="ColumnSubj-time-0-1-18">Фізрук Е.Ю.</div><div class="ColumnSubj-time-0-1-18">605</div></div><div class="ColumnSubj-cell2-0-1-17"><div class="ColumnSubj-id-0-1-19">Історія</div><div class="ColumnSubj-time-0-1-18">Шевчук Х.Т.</div><div class="ColumnSubj-time-0-1-18">606</div></div></div></div><div class="CalendarComponent-calendarContainer-0-1-20"><div class="react-calendar"><div class="react-calendar__navigation" style="display: flex;"><button class="react-calendar__navigation__arrow react-calendar__navigation__prev2-button" type="button">«</button><button class="react-calendar__navigation__arrow react-calendar__navigation__prev-button" type="button">‹</button><button class="react-calendar__navigation__label" type="button" style="flex-grow: 1;">февраль 2018 г.</button><button class="react-calendar__navigation__arrow react-calendar__navigation__next-button" type="button">›</button><button class="react-calendar__navigation__arrow react-calendar__navigation__next2-button" type="button">»</button></div><div class="react-calendar__month-view "><div style="display: flex; align-items: flex-end;"><div style="flex-grow: 1;"><div class="react-calendar__month-view__weekdays" style="display: flex;"><div class="react-calendar__month-view__weekdays__weekday" style="flex-basis: 14.2857%; overflow: hidden;">пн</div><div class="react-calendar__month-view__weekdays__weekday" style="flex-basis: 14.2857%; overflow: hidden;">вт</div><div class="react-calendar__month-view__weekdays__weekday" style="flex-basis: 14.2857%; overflow: hidden;">ср</div><div class="react-calendar__month-view__weekdays__weekday" style="flex-basis: 14.2857%; overflow: hidden;">чт</div><div class="react-calendar__month-view__weekdays__weekday" style="flex-basis: 14.2857%; overflow: hidden;">пт</div><div class="react-calendar__month-view__weekdays__weekday" style="flex-basis: 14.2857%; overflow: hidden;">сб</div><div class="react-calendar__month-view__weekdays__weekday" style="flex-basis: 14.2857%; overflow: hidden;">вс</div></div><div class="react-calendar__month-view__days" style="display: flex; flex-wrap: wrap;"><button class="react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--neighboringMonth" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-01-29T00:00:00.000">29</time></button><button class="react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--neighboringMonth" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-01-30T00:00:00.000">30</time></button><button class="react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--neighboringMonth" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-01-31T00:00:00.000">31</time></button><button class="react-calendar__tile react-calendar__tile--active react-calendar__month-view__days__day" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-02-01T00:00:00.000">1</time></button><button class="react-calendar__tile react-calendar__month-view__days__day" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-02-02T00:00:00.000">2</time></button><button class="react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--weekend" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-02-03T00:00:00.000">3</time></button><button class="react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--weekend" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-02-04T00:00:00.000">4</time></button><button class="react-calendar__tile react-calendar__month-view__days__day" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-02-05T00:00:00.000">5</time></button><button class="react-calendar__tile react-calendar__month-view__days__day" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-02-06T00:00:00.000">6</time></button><button class="react-calendar__tile react-calendar__month-view__days__day" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-02-07T00:00:00.000">7</time></button><button class="react-calendar__tile react-calendar__month-view__days__day" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-02-08T00:00:00.000">8</time></button><button class="react-calendar__tile react-calendar__month-view__days__day" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-02-09T00:00:00.000">9</time></button><button class="react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--weekend" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-02-10T00:00:00.000">10</time></button><button class="react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--weekend" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-02-11T00:00:00.000">11</time></button><button class="react-calendar__tile react-calendar__month-view__days__day" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-02-12T00:00:00.000">12</time></button><button class="react-calendar__tile react-calendar__month-view__days__day" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-02-13T00:00:00.000">13</time></button><button class="react-calendar__tile react-calendar__month-view__days__day" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-02-14T00:00:00.000">14</time></button><button class="react-calendar__tile react-calendar__month-view__days__day" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-02-15T00:00:00.000">15</time></button><button class="react-calendar__tile react-calendar__month-view__days__day" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-02-16T00:00:00.000">16</time></button><button class="react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--weekend" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-02-17T00:00:00.000">17</time></button><button class="react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--weekend" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-02-18T00:00:00.000">18</time></button><button class="react-calendar__tile react-calendar__month-view__days__day" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-02-19T00:00:00.000">19</time></button><button class="react-calendar__tile react-calendar__month-view__days__day" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-02-20T00:00:00.000">20</time></button><button class="react-calendar__tile react-calendar__month-view__days__day" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-02-21T00:00:00.000">21</time></button><button class="react-calendar__tile react-calendar__month-view__days__day" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-02-22T00:00:00.000">22</time></button><button class="react-calendar__tile react-calendar__month-view__days__day" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-02-23T00:00:00.000">23</time></button><button class="react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--weekend" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-02-24T00:00:00.000">24</time></button><button class="react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--weekend" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-02-25T00:00:00.000">25</time></button><button class="react-calendar__tile react-calendar__month-view__days__day" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-02-26T00:00:00.000">26</time></button><button class="react-calendar__tile react-calendar__month-view__days__day" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-02-27T00:00:00.000">27</time></button><button class="react-calendar__tile react-calendar__month-view__days__day" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-02-28T00:00:00.000">28</time></button><button class="react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--neighboringMonth" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-03-01T00:00:00.000">1</time></button><button class="react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--neighboringMonth" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-03-02T00:00:00.000">2</time></button><button class="react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--weekend react-calendar__month-view__days__day--neighboringMonth" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-03-03T00:00:00.000">3</time></button><button class="react-calendar__tile react-calendar__month-view__days__day react-calendar__month-view__days__day--weekend react-calendar__month-view__days__day--neighboringMonth" type="button" style="flex-basis: 14.2857%; overflow: hidden;"><time datetime="2018-03-04T00:00:00.000">4</time></button></div></div></div></div></div><div class="CalendarComponent-events-0-1-22"><ul><li class="CalendarComponent-list-0-1-21">et ultrices posuere cubilia curae</li><li class="CalendarComponent-list-0-1-21">diam vitae quam</li><li class="CalendarComponent-list-0-1-21">phasellus in</li><li class="CalendarComponent-list-0-1-21">pretium iaculis</li><li class="CalendarComponent-list-0-1-21">bibendum morbi non quam</li><li class="CalendarComponent-list-0-1-21">velit donec diam</li><li class="CalendarComponent-list-0-1-21">ac lobortis vel</li><li class="CalendarComponent-list-0-1-21">montes nascetur</li><li class="CalendarComponent-list-0-1-21">erat quisque erat</li><li class="CalendarComponent-list-0-1-21">in quis justo maecenas</li></ul></div></div></div></div></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  <script type="text/javascript" src="./Study hub_files/bundle.js"></script>
+
+</body></html>

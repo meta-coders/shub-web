@@ -19,6 +19,7 @@ const styles = {
     justifyContent:'center',
     height:'7vh',
     textAlign:'center',
+    fontSize:'1.5vw',
   },
   cell2:{
     background:'#B1BBCC',
@@ -27,6 +28,7 @@ const styles = {
     justifyContent:'center',
     height:'7vh',
     textAlign:'center',
+    fontSize:'1.5vw',
   },
   time:{
     fontSize:'0.8vw',

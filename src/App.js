@@ -19,7 +19,6 @@ class App extends Component {
           <Route exact path="/teachers" component={Teachers} />
           <Route path="/" component={Schedule} />
         </Switch>
-
       </div>
     );
   }

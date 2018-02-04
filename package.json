@@ -32,6 +32,10 @@
   "proxy": {
     "/api/getSchedule": {
       "target": "http://10.1.49.131:3000"
+    },
+    "/api/getEvents": {
+      "target": "http://10.1.49.131:3000"
     }
+
   }
 }
