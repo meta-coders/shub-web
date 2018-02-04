@@ -14,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path="/admin" component={Admin} />
+        <Route path="/admin" component={Admin} />
         <Route path="/" component={Front} />
       </Switch>
     );
