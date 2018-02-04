@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { withRouter, Redirect } from 'react-router-dom';
 import TimeTable from './TimeTable.js';
 import CalendarComponent from './CalendarComponent.js';
+import { connect } from 'react-redux';
 
 class Schedule extends Component {
 
@@ -16,6 +18,7 @@ class Schedule extends Component {
 
     return (
       <div style={styles}>
+        {!this.props.sessionId? <Redirect to={{ pathname: '/login' }} /> : <Fragment />}
         <TimeTable />
         <CalendarComponent />
       </div>
@@ -24,4 +27,10 @@ class Schedule extends Component {
 
 }
 
-export default Schedule;
+export default connect(
+  state => ({
+    sessionId: state.sessionInfo.sessionId,
+    data: state.schedule,
+  }),
+  dispatch => ({})
+)(Schedule);

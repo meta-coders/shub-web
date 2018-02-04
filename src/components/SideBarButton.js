@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import injectSheet from 'react-jss';
-
 const styles = {
   sideBarButton:{
     width:'100%',
@@ -27,8 +26,8 @@ const styles = {
 }
 
 class SideBarButton extends Component {
-
   render() {
+    if(!!localStorage.getItem('sessionId')){console.log('true');}else{console.log('false');};
     return (
       <Link
         className={this.props.classes.sideBarButton}
@@ -42,4 +41,4 @@ class SideBarButton extends Component {
 
 }
 
-export default injectSheet(styles)(SideBarButton);
+export default (injectSheet(styles)(SideBarButton));

@@ -41,7 +41,7 @@ const styles = {
 class TimeTable extends Component {
   componentDidMount() {
     console.log('DidMount');
-    this.props.onTimeTableDidMount('699b8469cf9c96b10f54068a827e9c0d')
+    this.props.onTimeTableDidMount(localStorage.getItem('sessionId'))
   }
   render() {
     const { classes, data } = this.props;
@@ -63,6 +63,7 @@ class TimeTable extends Component {
 
 export default connect(
   state => ({
+    sessionId: state.sessionInfo.sessionId,
     data: state.schedule,
   }),
   dispatch => ({

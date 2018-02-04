@@ -148,42 +148,78 @@ const Actions = {
     ).catch(err => console.log(err));
   },
 
-  // signInAction: (nickname, password) => (dispatch) => {
-  //
-  //   console.log('signInAction: ' + nickname + ' : ' + password);
-  //
-  //   const headers = new Headers();
-  //   headers.append('Content-Type', 'application/json');
-  //
-  //   const myInit = {
-  //     method: 'POST',
-  //     body: JSON.stringify({
-  //       credentials: {
-  //         login: nickname,
-  //         password,
-  //       },
-  //     }),
-  //     headers,
-  //   };
-  //
-  //   fetch('/loginVerify', myInit).then((response) => {
-  //     console.log('Fetch');
-  //     return response.json();
-  //   }).then(
-  //     (result) => {
-  //       if (!result.authenticated.sessionId) {
-  //         alert('You need to log in!');
-  //       }
-  //       const dispatchAbleSessionInfo = {
-  //         type: 'POST_LOGIN_INFO',
-  //         data: result.authenticated,
-  //       };
-  //       console.log(dispatchAbleSessionInfo);
-  //       dispatch(dispatchAbleSessionInfo);
-  //     }
-  //   ).catch(err => console.log(err));
-  // },
-  //
+  signInAction: (nickname, password) => (dispatch) => {
+
+    console.log('signInAction: ' + nickname + ' : ' + password);
+
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    const myInit = {
+      method: 'POST',
+      body: JSON.stringify({
+          login: nickname,
+          password,
+      }),
+      headers,
+    };
+
+    fetch('/auth/login', myInit).then((response) => {
+      console.log('Fetch');
+      return response.json();
+    }).then(
+      (result) => {
+        result.name=nickname;
+        const dispatchAbleSessionInfo = {
+          type: 'POST_LOGIN_INFO',
+          data: result,
+        };
+        console.log(dispatchAbleSessionInfo);
+        dispatch(dispatchAbleSessionInfo);
+      }
+    ).catch(
+      err => {
+        alert('You need to log in!');
+        console.log(err);
+      }
+    );
+  },
+
+  logOutAction: (sessionId) => (dispatch) => {
+
+    console.dir({sessionId});
+
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    const myInit = {
+      method: 'POST',
+      body: JSON.stringify({
+          sessionId: localStorage.getItem('sessionId')
+      }),
+      headers,
+    };
+
+    fetch('/auth/logout', myInit).then((response) => {
+      console.log('Fetch');
+      return {};
+    }).then(
+      (result) => {
+        const dispatchAbleSessionInfo = {
+          type: 'POST_LOGOUT_INFO',
+          data:{},
+        }
+        console.log(dispatchAbleSessionInfo);
+        dispatch(dispatchAbleSessionInfo);
+      }
+    ).catch(
+      err => {
+        alert('You haven`t log out!');
+        console.log(err);
+      }
+    );
+  },
+
   // registrationAction: (nickname, password) => (dispatch) => {
   //
   //   console.log('registrationAction: ' + nickname + ' : ' + password);
