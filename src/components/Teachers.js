@@ -24,6 +24,7 @@ const data = [
 const styles = {
   main: {
     backgroundColor: '#C5D0D9',
+    color: '#3d628f',
     height: '89vh',
     width: '94vw',
     padding: '6vh 2vw 6vh 2vw',
