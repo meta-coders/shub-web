@@ -33,16 +33,16 @@
   },
   "proxy": {
     "/api/getSchedule": {
-      "target": "http://10.1.49.131:3000"
+      "target": "http://207.154.253.221"
     },
     "/api/getEvents": {
-      "target": "http://10.1.49.131:3000"
+      "target": "http://207.154.253.221"
     },
     "/auth/login": {
-      "target": "http://10.1.49.131:3000"
+      "target": "http://207.154.253.221"
     },
     "/auth/logout": {
-      "target": "http://10.1.49.131:3000"
+      "target": "http://207.154.253.221"
     }
   }
 }
