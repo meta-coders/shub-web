@@ -12,8 +12,8 @@ import Admin from './Admin/components/Admin';
 
 class App extends Component {
   render() {
-    localStorage.setItem('sessionId', false);
-    localStorage.setItem('name', '');
+    if (!localStorage.getItem('sessionId')){localStorage.setItem('sessionId', false)};
+    if (!localStorage.getItem('name')){localStorage.setItem('name', '')};
     return (
       <Switch>
         <Route path="/admin" component={Admin} />
