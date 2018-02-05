@@ -43,7 +43,7 @@ const styleRow = {
     padding: '1vh 0',
     display: 'flex',
     justifyContent: 'center',
-  }
+  },
 };
 
 class Row extends Component {
@@ -57,7 +57,7 @@ class Row extends Component {
     let row = {};
     if (this.props.index % 2 === 0) {
       row = classes.row1;
-    } else { row = classes.row2};
+    } else { row = classes.row2; }
     return (
       <div className={row}>
         <div className={classes.fullName}><span>{this.props.name}</span></div>
@@ -67,7 +67,7 @@ class Row extends Component {
         <div className={classes.lesson}><span>{this.props.subject}</span></div>
         <div><span>{this.props.contacts}</span></div>
       </div>
-    )
+    );
   }
 }
 

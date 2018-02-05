@@ -10,7 +10,7 @@ const logOutAction = Actions.logOutAction;
 
 const styles = {
   header: {
-    background:'#7F94B5',
+    background: '#7F94B5',
     width: '100%',
     height: '11vh',
     color: '#607896',
@@ -30,44 +30,44 @@ const styles = {
     width: '20%',
     display: 'flex',
     flexDirection: 'row',
-    paddingRight: '4vw'
+    paddingRight: '4vw',
   },
   warning: {
     height: '75%',
-    margin: 'auto'
+    margin: 'auto',
   },
-  singIn:{
+  singIn: {
     height: '100%',
   },
   name: {
     fontSize: '1.5vw',
     display: 'flex',
-    flexDirection:'column',
+    flexDirection: 'column',
     justifyContent: 'center',
     paddingRight: '5%',
   },
   message: {
     fontSize: '1.5vw',
     display: 'flex',
-    flexDirection:'column',
+    flexDirection: 'column',
     justifyContent: 'center',
     paddingLeft: '5%',
   },
-}
+};
 
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.state={
+    this.state = {
       name: this.props.name,
       message: this.props.message,
     };
   }
   componentDidMount() {
-    this.props.onHeaderDidMount()
+    this.props.onHeaderDidMount();
   }
   handleLogOut = () => {
-    this.props.onLogOutClick(this.props.sessionInfo.sessionId)
+    this.props.onLogOutClick(this.props.sessionInfo.sessionId);
   }
 
   render() {
@@ -75,8 +75,8 @@ class Header extends Component {
     return (
       <div className={classes.header}>
         <div className={classes.leftSide}>
-          {localStorage.getItem('sessionId')!=='false'?<img className={classes.warning} src={warning}/>:<Fragment/>}
-          <span className={classes.message}>{localStorage.getItem('sessionId')!=='false'?this.state.message:''}</span>
+          {localStorage.getItem('sessionId') !== 'false' ? <img className={classes.warning} src={warning} /> : <Fragment />}
+          <span className={classes.message}>{localStorage.getItem('sessionId') !== 'false' ? this.state.message : ''}</span>
         </div>
         <div className={classes.rightSide}>
           <span className={classes.name}>{this.props.name}</span>
@@ -99,7 +99,7 @@ export default connect(
     sessionInfo: state.sessionInfo,
   }),
   dispatch => ({
-    onHeaderDidMount:() => dispatch({type:'RENDER_PAGE'}),
+    onHeaderDidMount: () => dispatch({ type: 'RENDER_PAGE' }),
     onLogOutClick: (sessionId) => {
       dispatch(logOutAction(sessionId));
     },

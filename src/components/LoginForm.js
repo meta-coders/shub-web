@@ -157,8 +157,8 @@ class LoginForm extends React.Component {
             </button>
           </div>
         </div>
-        {console.log(' : : '+localStorage.getItem('sessionId'))}
-        {localStorage.getItem('sessionId')!=='false' ? <Redirect to={{ pathname: '/' }} /> : <Fragment />}
+        {console.log(' : : ' + localStorage.getItem('sessionId'))}
+        {localStorage.getItem('sessionId') !== 'false' ? <Redirect to={{ pathname: '/' }} /> : <Fragment />}
       </div>
     );
   }

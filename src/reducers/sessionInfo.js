@@ -1,6 +1,6 @@
 const initialState =  {
   sessionId: false,
-  name:'',
+  name: '',
 };
 
 export default (state = initialState, action) => {
@@ -15,10 +15,10 @@ export default (state = initialState, action) => {
     return initialState;
   }
   if (action.type === 'RENDER_PAGE') {
-    return{
-      sessionId:localStorage.getItem('sessionId'),
-      name:localStorage.getItem('name')
-    }
+    return {
+      sessionId: localStorage.getItem('sessionId'),
+      name: localStorage.getItem('name'),
+    };
   }
   return state;
 };

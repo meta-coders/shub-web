@@ -7,18 +7,18 @@ import { connect } from 'react-redux';
 class Schedule extends Component {
 
   render() {
-    const styles= {
+    const styles = {
       backgroundColor: '#C5D0D9',
       height: '89vh',
       padding: '6vh 2vw 6vh 2vw',
       boxSizing: 'border-box',
       display: 'grid',
       gridTemplateColumns: '2fr 1fr',
-    }
+    };
 
     return (
       <div style={styles}>
-        {!this.props.sessionId? <Redirect to={{ pathname: '/login' }} /> : <Fragment />}
+        {!this.props.sessionId ? <Redirect to={{ pathname: '/login' }} /> : <Fragment />}
         <TimeTable />
         <CalendarComponent />
       </div>

@@ -7,73 +7,76 @@ import { connect } from 'react-redux';
 const buttons = [
   {
     pathname: '/',
-    src:'../icons/shub.svg',
+    src: '../icons/shub.svg',
   },
   {
     pathname: '/',
-    name:'Розклад',
-    src:'../icons/calendar.svg',
+    name: 'Розклад',
+    src: '../icons/calendar.svg',
   },
   {
     pathname: '/homework',
-    name:'ДЗ',
-    src:'../icons/notebook.svg',
+    name: 'ДЗ',
+    src: '../icons/notebook.svg',
   },
   {
     pathname: '/teachers',
-    name:'Вчителі',
-    src:'../icons/team.svg',
+    name: 'Вчителі',
+    src: '../icons/team.svg',
   },
   {
     pathname: '/marks',
-    name:'Оцінки',
-    src:'../icons/star.svg',
+    name: 'Оцінки',
+    src: '../icons/star.svg',
   },
   {
     pathname: '/stuff',
-    name:'Навчальни Материалы',
-    src:'../icons/notepad.svg',
+    name: 'Навчальни Материалы',
+    src: '../icons/notepad.svg',
   },
-]
+];
 
 const styles = {
-  sideBar:{
+  sideBar: {
     float: 'left',
     height: '100vh',
     width: '6vw',
     display: 'flex',
     flexDirection: 'column',
-    background:'#3d628f',
-    '& :hover':{
-      background:'#50AF80',
-      '& span':{
-        color:'white',
-      }
+    background: '#3d628f',
+    '& :hover': {
+      background: '#50AF80',
+      '& span': {
+        color: 'white',
+      },
     },
   },
-}
+};
 
 class SideBar extends Component {
   render() {
-    const { classes } = this.props
+    const { classes } = this.props;
     return (
       <div className={classes.sideBar}>
         {buttons.map(
-          ({pathname, name, src}) =>
-          {if(localStorage.getItem('sessionId')!=='false'){
-            console.log('true');
-            return <SideBarButton
-            className={classes.sideBarButton}
-            key={name}
-            pathname={pathname}
-            name={name}
-            src={src}/>
-          } else {
-            console.log('false');
-            return <Fragment/>
+          ({ pathname, name, src }) => {
+            if (localStorage.getItem('sessionId') !== 'false') {
+              console.log('true');
+              return (
+                <SideBarButton
+                  className={classes.sideBarButton}
+                  key={name}
+                  pathname={pathname}
+                  name={name}
+                  src={src}
+                />
+              );
+            } else {
+              console.log('false');
+              return <Fragment />;
+            }
           }
-          }
-          )
+        )
         }
       </div>
     );

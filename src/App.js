@@ -24,7 +24,7 @@ class App extends Component {
 const Front = () => (
   <div>
     <SideBar />
-    <Header name='Ivan Gnatiuk' message='Контрольна робота'/>
+    <Header name="Ivan Gnatiuk" message="Контрольна робота" />
     <Switch>
       <Route exact path="/homework" component={Homework} />
       <Route exact path="/marks" cpmponent={Marks} />

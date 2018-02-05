@@ -1,4 +1,5 @@
 /node_modules
+/public/icons
 /coverage
 /build
 /src/registerServiceWorker.js
