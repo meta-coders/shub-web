@@ -30,10 +30,11 @@ const styles = {
     width: '20%',
     display: 'flex',
     flexDirection: 'row',
-    paddingRight: '4vw',
+    justifyContent: 'space-between',
+    paddingRight: '0vw',
   },
   warning: {
-    height: '75%',
+    height: '60%',
     margin: 'auto',
   },
   singIn: {

@@ -32,17 +32,17 @@
     "husky": "^0.14.3"
   },
   "proxy": {
-    "/api/getSchedule": {
-      "target": "http://207.154.253.221"
+    "/api/getSchedule.json": {
+      "target": "http://35.198.146.54"
     },
-    "/api/getEvents": {
-      "target": "http://207.154.253.221"
+    "/api/getEvents.json": {
+      "target": "http://35.198.146.54"
     },
-    "/auth/login": {
-      "target": "http://207.154.253.221"
+    "/auth/signIn.json": {
+      "target": "http://35.198.146.54"
     },
-    "/auth/logout": {
-      "target": "http://207.154.253.221"
+    "/auth/signOut.json": {
+      "target": "http://35.198.146.54"
     }
   }
 }

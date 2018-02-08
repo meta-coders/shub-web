@@ -1,6 +1,7 @@
 const initialState =  {
   sessionId: false,
   name: '',
+  role: '',
 };
 
 export default (state = initialState, action) => {
