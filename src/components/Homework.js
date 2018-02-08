@@ -6,7 +6,7 @@ class Homework extends Component {
 
   render() {
     const styles = {
-      backgroundColor: '#f7f1e3',
+      backgroundColor: '#FFFDE7',
       height: '89vh',
       padding: '6vh 2vw 6vh 2vw',
       boxSizing: 'border-box',
