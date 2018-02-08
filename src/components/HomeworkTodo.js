@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 
 const styles = {
@@ -82,6 +83,7 @@ class HomeworkTodo extends Component {
       <div className={this.props.classes.scrollDiv}>
         {uniqueDates.map(date => (
           <div
+            key={date}
             style={{
               display: 'flex',
               justifyContent: 'space-between',
@@ -105,6 +107,7 @@ class HomeworkTodo extends Component {
             <div style={{ flex: '1 0 75%' }}>
               {homework.filter(x => x.date === date).map(task => (
                 <div
+                  key={task.desc}
                   style={{
                     background: '#93A1B6',
                     padding: '1vh',
@@ -113,7 +116,9 @@ class HomeworkTodo extends Component {
                     boxShadow: '0px 0px 10px #888',
                   }}
                 >
-                  <h1 style={{ fontSize: '1.5vw', margin: '0' }}>{task.desc}</h1>
+                  <h1 style={{ fontSize: '1.5vw', margin: '0' }}>
+                    {task.desc}
+                  </h1>
                 </div>
               ))}
             </div>
@@ -123,5 +128,9 @@ class HomeworkTodo extends Component {
     );
   }
 }
+
+HomeworkTodo.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
 export default injectSheet(styles)(HomeworkTodo);

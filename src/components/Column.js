@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 
 const styles = {
@@ -45,7 +46,10 @@ class Column extends Component {
   render() {
     const { classes, data, first } = this.props;
     const cells = data.map((item, i) => (
-      <div className={item.id % 2 == 0 ? classes.cell1 : classes.cell2}>
+      <div
+        key={item.id}
+        className={item.id % 2 === 0 ? classes.cell1 : classes.cell2}
+      >
         <div className={classes.id}>{i + 1}</div>
         <div className={classes.time}>{item.start + '-' + item.end}</div>
       </div>
@@ -62,7 +66,12 @@ class Column extends Component {
       </div>
     );
   }
-
 }
+
+Column.propTypes = {
+  classes: PropTypes.object.isRequired,
+  data: PropTypes.array.isRequired,
+  first: PropTypes.string,
+};
 
 export default injectSheet(styles)(Column);

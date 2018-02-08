@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 import user from '../icons/user.svg';
 import warning from '../icons/warning.svg';
@@ -75,8 +76,16 @@ class Header extends Component {
     return (
       <div className={classes.header}>
         <div className={classes.leftSide}>
-          {localStorage.getItem('sessionId') !== 'false' ? <img className={classes.warning} src={warning} /> : <Fragment />}
-          <span className={classes.message}>{localStorage.getItem('sessionId') !== 'false' ? this.state.message : ''}</span>
+          {localStorage.getItem('sessionId') !== 'false' ?
+            <img className={classes.warning} src={warning} /> :
+            <Fragment />
+          }
+          <span className={classes.message}>
+            {localStorage.getItem('sessionId') !== 'false' ?
+              this.state.message :
+              ''
+            }
+          </span>
         </div>
         <div className={classes.rightSide}>
           <span className={classes.name}>{this.props.name}</span>
@@ -84,7 +93,11 @@ class Header extends Component {
             to={{ pathname: '/login' }}
             className={classes.warning}
           >
-            <img className={classes.singIn} src={user} onClick={this.handleLogOut} />
+            <img
+              className={classes.singIn}
+              src={user}
+              onClick={this.handleLogOut}
+            />
           </Link>
         </div>
       </div>
@@ -92,6 +105,15 @@ class Header extends Component {
   }
 
 }
+
+Header.propTypes = {
+  name: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+  onHeaderDidMount: PropTypes.func.isRequired,
+  onLogOutClick: PropTypes.func.isRequired,
+  sessionInfo:  PropTypes.string.isRequired,
+  classes: PropTypes.object.isRequired,
+};
 
 export default connect(
   state => ({

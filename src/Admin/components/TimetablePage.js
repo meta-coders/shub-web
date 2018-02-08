@@ -1,5 +1,5 @@
 import React from 'react';
-import axios, { post } from 'axios';
+import { post } from 'axios';
 
 class TimetablePage extends React.Component {
 
@@ -45,6 +45,7 @@ class TimetablePage extends React.Component {
       </form>
     );
   }
+
 }
 
 export default TimetablePage;
