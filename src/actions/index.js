@@ -41,7 +41,7 @@ const Actions = {
     }).then(
       (result) => {
         console.log(result);
-        const data = result;
+        const data = (result==='Not Authorized'?{schedule:[],timetable:[]}:result);
         const dispatchObj = {
           type: 'FETCH_SCHEDULE_POST',
           data,
@@ -78,7 +78,7 @@ const Actions = {
     }).then(
       (result) => {
         console.log(result);
-        const data = result;
+        const data = (result==='Not authorized'?[]:result);
         const dispatchObj = {
           type: 'FETCH_EVENT_POST',
           data,
@@ -105,7 +105,12 @@ const Actions = {
       headers,
     };
 
-    fetch('/auth/signIn.json', myInit).then((response) => {
+    fetch('/auth/signIn.json', myInit).catch(
+      (err) => {
+        console.log('SignIn Err: '+err);
+        alert('You need to log in!');
+      }
+    ).then((response) => {
       console.log('Fetch');
       return response.json();
     }).then(
@@ -117,11 +122,6 @@ const Actions = {
         };
         console.log(dispatchAbleSessionInfo);
         dispatch(dispatchAbleSessionInfo);
-      }
-    ).catch(
-      (err) => {
-        console.log('SignIn Err: '+err);
-        alert('You need to log in!');
       }
     );
   },

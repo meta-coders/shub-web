@@ -41,6 +41,10 @@ const styles = {
     '& div':{
       margin:'auto',
     }
+  },
+  description:{
+    margin:'auto auto auto 0',
+    fontSize:'1.5vh',
   }
 };
 
@@ -90,7 +94,7 @@ class CalendarComponent extends Component {
             <div>{eventDay.getDate()}</div>
             <div>{eventDay.toLocaleString('uk-ua', { month: 'short' })}</div>
           </div>
-          <div>{obj.description}</div>
+          <div className={this.props.classes.description}>{obj.description}</div>
         </li>
       );
     }
