@@ -1,19 +1,20 @@
 const Actions = {
   homeworkAction: (homeworkId, sessionId, homework) => (dispatch) => {
-    const newHomework = homework.map((task) =>{
-      if(task.id!==homeworkId) {
-        return task
+    const newHomework = homework.map((task) => {
+      if (task.id !== homeworkId) {
+        return task;
       } else {
-        const newTask = { ...task, done:!task.done,}
-        return newTask
-      }}
-    )
+        const newTask = { ...task, done: !task.done };
+        return newTask;
+      }
+    }
+    );
     // let currentTask = homework.filter((task, i) => task.id===homeworkId);
     console.log(sessionId);
-    dispatch ({
-    type:'FETCH_HOMEWORK',
-    data: newHomework
-    })
+    dispatch({
+      type: 'FETCH_HOMEWORK',
+      data: newHomework,
+    });
   },
   timetableAction: sessionId => (dispatch) => {
     console.log('timetableAction' + sessionId);
@@ -29,19 +30,23 @@ const Actions = {
       headers,
     };
 
-    fetch('/api/getSchedule.json', myInit).catch(err => {
-      console.log(err)
+    fetch('/api/getSchedule.json', myInit).catch((err) => {
+      console.log(err);
       dispatch({
-        type:'FETCH_SCHEDULE_POST',
-        data:[]
-      })
+        type: 'FETCH_SCHEDULE_POST',
+        data: [],
+      });
     }).then((response) => {
       console.log('Fetch');
       return response.json();
     }).then(
       (result) => {
         console.log(result);
-        const data = (result==='Not Authorized'?{schedule:[],timetable:[]}:result);
+        const data = (
+          result === 'Not Authorized' ?
+            { schedule: [], timetable: [] } :
+            result
+        );
         const dispatchObj = {
           type: 'FETCH_SCHEDULE_POST',
           data,
@@ -66,19 +71,19 @@ const Actions = {
       headers,
     };
 
-    fetch('/api/getEvents.json', myInit).catch(err => {
-      console.log(err)
+    fetch('/api/getEvents.json', myInit).catch((err) => {
+      console.log(err);
       dispatch({
-        type:'FETCH_EVENT_POST',
-        data:[]
-      })
+        type: 'FETCH_EVENT_POST',
+        data: [],
+      });
     }).then((response) => {
       console.log('Fetch');
       return response.json();
     }).then(
       (result) => {
         console.log(result);
-        const data = (result==='Not authorized'?[]:result);
+        const data = (result === 'Not authorized' ? [] : result);
         const dispatchObj = {
           type: 'FETCH_EVENT_POST',
           data,
@@ -107,7 +112,7 @@ const Actions = {
 
     fetch('/auth/signIn.json', myInit).catch(
       (err) => {
-        console.log('SignIn Err: '+err);
+        console.log('SignIn Err: ' + err);
         alert('You need to log in!');
       }
     ).then((response) => {

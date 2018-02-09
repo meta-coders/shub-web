@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 import Row from './Row.js';
 
+/*eslint-disable */
+
 const data = [
   {
     name: 'Iгор Орловський',
@@ -21,6 +23,7 @@ const data = [
     contacts: 'natahak@gmail.com',
   }];
 
+/*eslint-enable */
 
 const styles = {
   main: {

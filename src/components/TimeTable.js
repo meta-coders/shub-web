@@ -35,7 +35,7 @@ const styles = {
     gridTemplateColumns: '1.5fr 2fr 2fr 2fr 2fr 2fr 2fr',
     '& *': {
       color: '#3d628f',
-      fontWeight:'900',
+      fontWeight: '900',
     },
   },
 };
@@ -59,7 +59,7 @@ class TimeTable extends Component {
         {
           [0, 1, 2, 3, 4, 5].map(i => (
             <ColumnSubj
-              key={structSchedule[i]}
+              key={i + 1}
               data={structSchedule[i]}
               weekday={i + 1}
               max={maxLessons}

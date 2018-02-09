@@ -21,31 +21,31 @@ const styles = {
     },
     '& *': {
       color: '#3d628f',
-    }
+    },
   },
   dayContainer: {
     display: 'flex',
     justifyContent: 'space-between',
     margin: '2vh 0',
   },
-  date:{
+  date: {
     display: 'flex',
     flexDirection: 'column',
     flex: '1 0 5%',
-    textAlign: 'center'
+    textAlign: 'center',
   },
-  dateNumb:{
+  dateNumb: {
     fontSize: '1.5vw',
     marginTop: '1.5vw',
     marginBottom: '1.5vw',
   },
-  dateMonth:{
+  dateMonth: {
     fontSize: '0.8vw',
   },
-  dayHomework:{
+  dayHomework: {
     flex: '1 0 75%',
   },
-  homework:{
+  homework: {
     display: 'grid',
     gridTemplateColumns: '6fr 1fr',
     background: '#93A1B6',
@@ -54,27 +54,31 @@ const styles = {
     margin: '2vh 0',
     boxShadow: '2px 2px 2px #888',
   },
-  task:{
+  task: {
     fontSize: '1.5vw',
     margin: '0',
   },
-  done:{
+  done: {
     boxShadow: '2px 2px 2px #888',
-    borderRadius:'100%',
-    margin:'auto',
-    height:'2.5vw',
+    borderRadius: '100%',
+    margin: 'auto',
+    height: '2.5vw',
   },
-  hourglass:{
+  hourglass: {
     boxShadow: '2px 2px 2px #888',
-    borderRadius:'100%',
-    margin:'auto',
-    height:'2.5vw',
-    background:'#e67e22',
+    borderRadius: '100%',
+    margin: 'auto',
+    height: '2.5vw',
+    background: '#e67e22',
   },
 };
 
 class HomeworkTodo extends Component {
-  handleDoneClick = (homeworkId, sessionId, homework) => () => this.props.onHomeworkClick(homeworkId, sessionId, homework);
+  handleDoneClick = (
+    homeworkId,
+    sessionId,
+    homework
+  ) => () => this.props.onHomeworkClick(homeworkId, sessionId, homework);
   render() {
     const { classes, homework, sessionId } = this.props;
     const dates = homework.map(task => task.date).sort((a, b) => a > b);
@@ -83,7 +87,10 @@ class HomeworkTodo extends Component {
     return (
       <div className={classes.scrollDiv}>
         {uniqueDates.map(date => (
-          <div className={classes.dayContainer}>
+          <div
+            className={classes.dayContainer}
+            key={date}
+          >
             <div className={classes.date} >
               <h2
                 className={classes.dateNumb}
@@ -96,13 +103,44 @@ class HomeworkTodo extends Component {
             </div>
             <div className={classes.dayHomework}>
               {homework.filter(x => x.date === date).map(task => (
-                <div className={classes.homework}>
+                <div
+                  className={classes.homework}
+                  key={task.desc}
+                >
                   <h1 className={classes.task}>{task.desc}</h1>
                   {
-                    task.done==='waiting'?<img className={classes.hourglass} src={hourglass} onClick={this.handleDoneClick(task.id, sessionId, homework)} />:
-                    task.done?<img className={classes.done} src={done} onClick={this.handleDoneClick(task.id, sessionId, homework)}/>:
-                    <img className={classes.done} src={cross} onClick={this.handleDoneClick(task.id, sessionId, homework)}/>
-                  }
+                    task.done === 'waiting' ? (
+                      <img
+                        className={classes.hourglass}
+                        src={hourglass}
+                        onClick={this.handleDoneClick(
+                          task.id,
+                          sessionId,
+                          homework
+                        )}
+                      />
+                    ) :
+                      task.done ? (
+                        <img
+                          className={classes.done}
+                          src={done}
+                          onClick={this.handleDoneClick(
+                            task.id,
+                            sessionId,
+                            homework
+                          )}
+                        />
+                      ) : (
+                        <img
+                          className={classes.done}
+                          src={cross}
+                          onClick={this.handleDoneClick(
+                            task.id,
+                            sessionId,
+                            homework
+                          )}
+                        />
+                      )}
                 </div>
               ))}
             </div>
@@ -115,6 +153,9 @@ class HomeworkTodo extends Component {
 
 HomeworkTodo.propTypes = {
   classes: PropTypes.object.isRequired,
+  onHomeworkClick: PropTypes.func.isRequired,
+  homework: PropTypes.array,
+  sessionId: PropTypes.string,
 };
 
 export default connect(

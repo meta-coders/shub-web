@@ -4,14 +4,16 @@ const initialState =  [
     'done': false,
     'date': '2018-03-01',
     'lesson_id': 10,
-    'desc': 'Nullam molestie nibh in lectus. Pellentesque at nulla. Suspendisse potenti.',
+    'desc': 'Nullam molestie nibh in lectus. Pellentesque at nulla.\
+     Suspendisse potenti.',
   },
   {
     'id': 2,
     'done': true,
     'date': '2018-03-12',
     'lesson_id': 33,
-    'desc': 'Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.',
+    'desc': 'Vestibulum rutrum rutrum neque. Aenean auctor\
+     gravida sem.',
   },
   {
     'id': 3,
@@ -32,14 +34,16 @@ const initialState =  [
     'done': true,
     'date': '2018-02-17',
     'lesson_id': 4,
-    'desc': 'Sed accumsan felis. Ut at dolor quis odio consequat varius. Integer ac leo.',
+    'desc': 'Sed accumsan felis. Ut at dolor quis odio consequat varius.\
+     Integer ac leo.',
   },
   {
     'id': 6,
     'done': true,
     'date': '2018-02-10',
     'lesson_id': 31,
-    'desc': 'Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.',
+    'desc': 'Aliquam quis turpis eget elit sodales scelerisque. Mauris sit\
+     amet eros. Suspendisse accumsan tortor quis turpis.',
   },
   {
     'id': 7,
@@ -53,7 +57,8 @@ const initialState =  [
     'done': true,
     'date': '2018-02-14',
     'lesson_id': 31,
-    'desc': 'Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante.',
+    'desc': 'Mauris sit amet eros. Suspendisse accumsan tortor quis\
+     turpis. Sed ante.',
   },
 ];
 

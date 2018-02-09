@@ -92,12 +92,11 @@ class ColumnSubj extends Component {
   }
 
 }
-
-export default injectSheet(styles)(ColumnSubj);
-
 ColumnSubj.propTypes = {
   classes: PropTypes.object.isRequired,
   data: PropTypes.array.isRequired,
   max: PropTypes.number.isRequired,
   weekday: PropTypes.number.isRequired,
 };
+
+export default injectSheet(styles)(ColumnSubj);

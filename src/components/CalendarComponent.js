@@ -28,25 +28,24 @@ const styles = {
     borderRadius: '0.5vw',
     padding: '5%',
     listStyle: 'none',
-    marginTop: '20px',
     fontSize: '2vh',
     color: '#607896',
   },
   events: {
     overflow: 'scroll',
   },
-  date:{
+  date: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    '& div':{
-      margin:'auto',
-    }
+    '& div': {
+      margin: 'auto',
+    },
   },
-  description:{
-    margin:'auto auto auto 0',
-    fontSize:'1.5vh',
-  }
+  description: {
+    margin: 'auto auto auto 0',
+    fontSize: '1.5vh',
+  },
 };
 
 const numbToMonth = (numb) => {
@@ -91,14 +90,18 @@ class CalendarComponent extends Component {
 
   renderEvents = (obj) => {
     const eventDay = new Date(obj.date);
-    if (eventDay.toLocaleString('en-us', { month: 'short' }) === this.state.month) {
+    if (
+      eventDay.toLocaleString('en-us', { month: 'short' }) === this.state.month
+    ) {
       return (
         <li className={this.props.classes.list}>
           <div className={this.props.classes.date}>
             <div>{eventDay.getDate()}</div>
             <div>{eventDay.toLocaleString('uk-ua', { month: 'short' })}</div>
           </div>
-          <div className={this.props.classes.description}>{obj.description}</div>
+          <div className={this.props.classes.description}>
+            {obj.description}
+          </div>
         </li>
       );
     }

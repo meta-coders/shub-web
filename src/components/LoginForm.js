@@ -64,7 +64,7 @@ const styles = {
     background: '#ecf0f1',
   },
   label: {
-    height:'2vh',
+    height: '2vh',
     width: '30%',
     fontSize: '1.4vw',
     color: '#ecf0f1',
@@ -76,7 +76,7 @@ const styles = {
     marginLeft: '10%',
   },
   input: {
-    height:'2vh',
+    height: '2vh',
     width: '13vw',
     outline: 'white',
     outlineWidth: '0.2vw',
