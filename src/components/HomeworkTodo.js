@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 import done from '../icons/done2.svg';
 import cross from '../icons/cross.svg';
@@ -111,6 +112,10 @@ class HomeworkTodo extends Component {
     );
   }
 }
+
+HomeworkTodo.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
 export default connect(
   state => ({

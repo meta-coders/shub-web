@@ -1,4 +1,5 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 
 const styles = {
@@ -62,14 +63,17 @@ const numbToWeekday = (numb) => {
   if (numb === 3) return 'Середа';
   if (numb === 4) return 'Четверг';
   if (numb === 5) return 'П`ятниця';
-  if (numb === 6) return 'Суббота';
+  if (numb === 6) return 'Субота';
 };
 
 class ColumnSubj extends Component {
   render() {
     const { classes, data, max, weekday } = this.props;
     const cells = structCells(data, max).map((item, index) => (
-      <div className={index % 2 !== 0 ? classes.cell1 : classes.cell2}>
+      <div
+        key={item.subject}
+        className={index % 2 !== 0 ? classes.cell1 : classes.cell2}
+      >
         <div className={classes.id}>{item.subject}</div>
         <div className={classes.time}>{item.teacher_name}</div>
         <div className={classes.time}>{item.cabinet}</div>
@@ -90,3 +94,10 @@ class ColumnSubj extends Component {
 }
 
 export default injectSheet(styles)(ColumnSubj);
+
+ColumnSubj.propTypes = {
+  classes: PropTypes.object.isRequired,
+  data: PropTypes.array.isRequired,
+  max: PropTypes.number.isRequired,
+  weekday: PropTypes.number.isRequired,
+};

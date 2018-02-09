@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 import { connect } from 'react-redux';
 import Column from './Column';
@@ -9,7 +10,7 @@ import Actions from '../actions/index';
 
 const timetableAction = Actions.timetableAction;
 
-const Lesson = (arr) => {
+const lessonFilter = (arr) => {
   const newArr = [];
   for (let i = 1; i < 7; i++) {
     newArr.push(arr.filter(item => item.weekday === i));
@@ -46,21 +47,36 @@ class TimeTable extends Component {
   }
   render() {
     const { classes, data } = this.props;
-    const structSchedule = Lesson(data.schedule);
+    const structSchedule = lessonFilter(data.schedule);
     const maxLessons = getMaxLenth(structSchedule);
-    const structTimetable = data.timetable.filter((item, i) => (parseInt(i + 1) <= maxLessons));
+    const structTimetable = data.timetable.filter((item, i) => (
+      parseInt(i + 1) <= maxLessons
+    ));
     console.log(structTimetable);
     return (
       <div className={classes.timetable}>
         <Column data={structTimetable} first={clock} />
         {
-          [0, 1, 2, 3, 4, 5].map(i => <ColumnSubj data={structSchedule[i]} weekday={i + 1} max={maxLessons} />)
+          [0, 1, 2, 3, 4, 5].map(i => (
+            <ColumnSubj
+              key={structSchedule[i]}
+              data={structSchedule[i]}
+              weekday={i + 1}
+              max={maxLessons}
+            />
+          ))
         }
       </div>
     );
   }
 
 }
+
+TimeTable.propTypes = {
+  onTimeTableDidMount: PropTypes.func.isRequired,
+  data: PropTypes.array.isRequired,
+  classes: PropTypes.object.isRequired,
+};
 
 export default connect(
   state => ({

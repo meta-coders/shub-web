@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 
 const styleRow = {
@@ -70,5 +71,14 @@ class Row extends Component {
     );
   }
 }
+
+Row.propTypes = {
+  classes: PropTypes.object.isRequired,
+  index: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  photo: PropTypes.string.isRequired,
+  subject: PropTypes.string.isRequired,
+  contacts: PropTypes.string.isRequired,
+};
 
 export default injectSheet(styleRow)(Row);

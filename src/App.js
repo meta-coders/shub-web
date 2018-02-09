@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import RegistrationForm from './components/RegistrationForm.js';
 import LoginForm from './components/LoginForm.js';
 import Teachers from './components/Teachers.js';
@@ -9,19 +9,6 @@ import SideBar from './components/SideBar';
 import Marks from './components/Marks.js';
 import Header from './components/Header';
 import Admin from './Admin/components/Admin';
-
-class App extends Component {
-  render() {
-    if (!localStorage.getItem('sessionId')){localStorage.setItem('sessionId', false)};
-    if (!localStorage.getItem('name')){localStorage.setItem('name', '')};
-    return (
-      <Switch>
-        <Route path="/admin" component={Admin} />
-        <Route path="/" component={Front} />
-      </Switch>
-    );
-  }
-}
 
 const Front = () => (
   <div>
@@ -37,5 +24,22 @@ const Front = () => (
     </Switch>
   </div>
 );
+
+class App extends Component {
+  render() {
+    if (!localStorage.getItem('sessionId')) {
+      localStorage.setItem('sessionId', false);
+    }
+    if (!localStorage.getItem('name')) {
+      localStorage.setItem('name', '');
+    }
+    return (
+      <Switch>
+        <Route path="/admin" component={Admin} />
+        <Route path="/" component={Front} />
+      </Switch>
+    );
+  }
+}
 
 export default App;

@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router';
 import injectSheet from 'react-jss';
+
 const styles = {
   sideBarButton: {
     width: '100%',
@@ -29,7 +30,11 @@ const styles = {
 
 class SideBarButton extends Component {
   render() {
-    if (localStorage.getItem('sessionId')) { console.log('true'); } else { console.log('false'); }
+    if (localStorage.getItem('sessionId')) {
+      console.log('true');
+    } else {
+      console.log('false');
+    }
     return (
       <Link
         className={this.props.classes.sideBarButton}
@@ -42,5 +47,12 @@ class SideBarButton extends Component {
   }
 
 }
+
+SideBarButton.propTypes = {
+  classes: PropTypes.object.isRequired,
+  pathname: PropTypes.string.isRequired,
+  src: PropTypes.string.isRequired,
+  name: PropTypes.string,
+};
 
 export default (injectSheet(styles)(SideBarButton));

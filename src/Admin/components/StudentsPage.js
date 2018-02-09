@@ -1,5 +1,5 @@
 import React from 'react';
-import axios, { post } from 'axios';
+import { post } from 'axios';
 
 class StudentsPage extends React.Component {
 
@@ -47,7 +47,11 @@ class StudentsPage extends React.Component {
       <form onSubmit={this.onFormSubmit}>
         <h1>Student Upload</h1>
         <span>Class name: </span>
-        <input type="text" value={this.state.className} onChange={this.onInputChange} />
+        <input
+          type="text"
+          value={this.state.className}
+          onChange={this.onInputChange}
+        />
         <br />
         <br />
         <input type="file" onChange={this.onChange} />
@@ -55,6 +59,7 @@ class StudentsPage extends React.Component {
       </form>
     );
   }
+
 }
 
 export default StudentsPage;

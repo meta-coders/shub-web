@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import LoginForm from '../../components/LoginForm';
 import Navbar from './Navbar';
@@ -43,5 +44,13 @@ const Admin = ({ match }) => (
     )}
   </div>
 );
+
+AdminRouter.propTypes = {
+  match: PropTypes.object.isRequired,
+};
+
+Admin.propTypes = {
+  match: PropTypes.object.isRequired,
+};
 
 export default Admin;

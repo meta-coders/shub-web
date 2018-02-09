@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 import { connect } from 'react-redux';
 import Calendar from 'react-calendar/dist/entry.nostyle';
@@ -82,7 +83,10 @@ class CalendarComponent extends Component {
   }
 
   onMonthChange = (month) => {
-    this.setState({ date: month.activeStartDate, month: month.activeStartDate.toString().split(' ')[1] });
+    this.setState({
+      date: month.activeStartDate,
+      month: month.activeStartDate.toString().split(' ')[1],
+    });
   }
 
   renderEvents = (obj) => {
@@ -107,7 +111,6 @@ class CalendarComponent extends Component {
         <Calendar
           style={calendarStyle}
           onChange={this.onChange}
-          onMonthClick={value => console.log('hi')}
           onActiveDateChange={this.onMonthChange}
           onClickDay={value => this.setState({ date: value })}
           value={this.state.date}
@@ -121,6 +124,12 @@ class CalendarComponent extends Component {
     );
   }
 }
+
+CalendarComponent.propTypes = {
+  onCalendarComponentDidMount: PropTypes.func.isRequired,
+  classes: PropTypes.object.isRequired,
+  events: PropTypes.array.isRequired,
+};
 
 export default connect(
   state => ({
