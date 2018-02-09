@@ -10,7 +10,7 @@ const styles = {
       position: 'relative',
       zIndex: '10',
       background: '#7F94B5',
-      boxShadow: '0px 3px 5px -3px #777',
+      boxShadow: '0 1px 1px #888',
     },
   },
   cell1: {

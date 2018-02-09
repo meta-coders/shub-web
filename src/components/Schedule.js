@@ -9,7 +9,7 @@ class Schedule extends Component {
 
   render() {
     const styles = {
-      backgroundColor: '#C5D0D9',
+      backgroundColor: '#FFFDE7',
       height: '89vh',
       padding: '6vh 2vw 6vh 2vw',
       boxSizing: 'border-box',
