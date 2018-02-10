@@ -1,43 +1,42 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 
 const styles = {
   column: {
     display: 'flex',
     flexDirection: 'column',
+    position: 'relative',
+    zIndex: '10',
+    boxShadow: '3px 0px 2px #888',
     '& > div:first-child': {
       position: 'relative',
       zIndex: '10',
       background: '#7F94B5',
-      boxShadow: '0px 15px 10px -15px #777',
+      borderRadius: '0',
     },
   },
   cell1: {
-    borderRight: '1px solid #93A1B6',
     background: '#93A1B6',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    height: '7vh',
     textAlign: 'center',
+    height: 'fill-available',
     '& img': {
-      height: '5vh',
+      height: '4vh',
     },
   },
   cell2: {
-    borderRight: '1px solid #93A1B6',
     background: '#B1BBCC',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    height: '7vh',
-    textAlign: 'center',
+    composes: '$cell1',
   },
   time: {
     fontSize: '0.8vw',
   },
   id: {
-    fontSize: '2vw',
+    fontSize: '1vw',
+    marginBottom: '0.5vh',
   },
 };
 
@@ -45,7 +44,10 @@ class Column extends Component {
   render() {
     const { classes, data, first } = this.props;
     const cells = data.map((item, i) => (
-      <div className={item.id % 2 == 0 ? classes.cell1 : classes.cell2}>
+      <div
+        key={item.id}
+        className={item.id % 2 === 0 ? classes.cell1 : classes.cell2}
+      >
         <div className={classes.id}>{i + 1}</div>
         <div className={classes.time}>{item.start + '-' + item.end}</div>
       </div>
@@ -62,7 +64,12 @@ class Column extends Component {
       </div>
     );
   }
-
 }
+
+Column.propTypes = {
+  classes: PropTypes.object.isRequired,
+  data: PropTypes.array.isRequired,
+  first: PropTypes.string,
+};
 
 export default injectSheet(styles)(Column);

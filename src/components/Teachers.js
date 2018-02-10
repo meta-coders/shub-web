@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 import Row from './Row.js';
+
+/*eslint-disable */
 
 const data = [
   {
@@ -20,6 +23,7 @@ const data = [
     contacts: 'natahak@gmail.com',
   }];
 
+/*eslint-enable */
 
 const styles = {
   main: {
@@ -58,7 +62,7 @@ class Teachers extends Component {
     return (
       <div className={classes.main}>
         <div className={classes.header}>
-          <div>Iм'я</div>
+          <div>Iм&apos;я</div>
           <div>Фото</div>
           <div>Предмет</div>
           <div>Контакти</div>
@@ -67,8 +71,12 @@ class Teachers extends Component {
           index++;
           return (
             <Row
-              name={teacher.name} photo={teacher.photo}
-              subject={teacher.subject} contacts={teacher.contacts} index={index}
+              key={teacher.name}
+              name={teacher.name}
+              photo={teacher.photo}
+              subject={teacher.subject}
+              contacts={teacher.contacts}
+              index={index}
             />
           );
         })
@@ -78,5 +86,9 @@ class Teachers extends Component {
   }
 
 }
+
+Teachers.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
 export default injectSheet(styles)(Teachers);

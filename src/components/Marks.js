@@ -7,7 +7,6 @@ class Marks extends Component {
       <div>5 good boy!</div>
     );
   }
-
 }
 
 export default Marks;

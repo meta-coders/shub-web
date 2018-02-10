@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 import SideBarButton from './SideBarButton';
 import { connect } from 'react-redux';
@@ -31,7 +32,7 @@ const buttons = [
   },
   {
     pathname: '/stuff',
-    name: 'Навчальни Материалы',
+    name: 'Навчальний Матеріал',
     src: '../icons/notepad.svg',
   },
 ];
@@ -40,7 +41,7 @@ const styles = {
   sideBar: {
     float: 'left',
     height: '100vh',
-    width: '6vw',
+    width: '8vw',
     display: 'flex',
     flexDirection: 'column',
     background: '#3d628f',
@@ -84,9 +85,12 @@ class SideBar extends Component {
 
 }
 
+SideBar.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
 export default connect(
   state => ({
     sessionId: state.sessionInfo.sessionId,
-  }),
-  () => ({})
+  })
 )(injectSheet(styles)(SideBar));

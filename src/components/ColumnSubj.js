@@ -1,4 +1,5 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 
 const styles = {
@@ -6,10 +7,9 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     '& > div:first-child': {
-      position: 'relative',
-      zIndex: '10',
       background: '#7F94B5',
-      boxShadow: '0px 3px 5px -3px #777',
+      boxShadow: '0 1px 1px #888',
+      fontSize: '1.1vw',
     },
   },
   cell1: {
@@ -17,24 +17,20 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    height: '7vh',
+    height: 'fill-available',
     textAlign: 'center',
     fontSize: '1.5vw',
   },
   cell2: {
+    composes: '$cell1',
     background: '#B1BBCC',
     display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    height: '7vh',
-    textAlign: 'center',
-    fontSize: '1.5vw',
   },
   time: {
-    fontSize: '0.8vw',
+    fontSize: '0.6vw',
   },
   id: {
-    fontSize: '1vw',
+    fontSize: '0.9vw',
   },
 };
 
@@ -62,14 +58,17 @@ const numbToWeekday = (numb) => {
   if (numb === 3) return 'Середа';
   if (numb === 4) return 'Четверг';
   if (numb === 5) return 'П`ятниця';
-  if (numb === 6) return 'Суббота';
+  if (numb === 6) return 'Субота';
 };
 
 class ColumnSubj extends Component {
   render() {
     const { classes, data, max, weekday } = this.props;
     const cells = structCells(data, max).map((item, index) => (
-      <div className={index % 2 !== 0 ? classes.cell1 : classes.cell2}>
+      <div
+        key={item.subject}
+        className={index % 2 !== 0 ? classes.cell1 : classes.cell2}
+      >
         <div className={classes.id}>{item.subject}</div>
         <div className={classes.time}>{item.teacher_name}</div>
         <div className={classes.time}>{item.cabinet}</div>
@@ -88,5 +87,11 @@ class ColumnSubj extends Component {
   }
 
 }
+ColumnSubj.propTypes = {
+  classes: PropTypes.object.isRequired,
+  data: PropTypes.array.isRequired,
+  max: PropTypes.number.isRequired,
+  weekday: PropTypes.number.isRequired,
+};
 
 export default injectSheet(styles)(ColumnSubj);

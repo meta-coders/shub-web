@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import { withRouter, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import TimeTable from './TimeTable.js';
 import CalendarComponent from './CalendarComponent.js';
 import { connect } from 'react-redux';
@@ -8,7 +9,7 @@ class Schedule extends Component {
 
   render() {
     const styles = {
-      backgroundColor: '#C5D0D9',
+      backgroundColor: '#FFFDE7',
       height: '89vh',
       padding: '6vh 2vw 6vh 2vw',
       boxSizing: 'border-box',
@@ -18,7 +19,10 @@ class Schedule extends Component {
 
     return (
       <div style={styles}>
-        {!this.props.sessionId ? <Redirect to={{ pathname: '/login' }} /> : <Fragment />}
+        {!this.props.sessionId ?
+          <Redirect to={{ pathname: '/login' }} /> :
+          <Fragment />
+        }
         <TimeTable />
         <CalendarComponent />
       </div>
@@ -27,10 +31,13 @@ class Schedule extends Component {
 
 }
 
+Schedule.propTypes = {
+  sessionId: PropTypes.string,
+};
+
 export default connect(
   state => ({
     sessionId: state.sessionInfo.sessionId,
     data: state.schedule,
-  }),
-  dispatch => ({})
+  })
 )(Schedule);

@@ -32,16 +32,16 @@
     "husky": "^0.14.3"
   },
   "proxy": {
-    "/api/getSchedule": {
+    "/api/getSchedule.json": {
       "target": "http://207.154.253.221"
     },
-    "/api/getEvents": {
+    "/api/getEvents.json": {
       "target": "http://207.154.253.221"
     },
-    "/auth/login": {
+    "/auth/signIn.json": {
       "target": "http://207.154.253.221"
     },
-    "/auth/logout": {
+    "/auth/signOut.json": {
       "target": "http://207.154.253.221"
     }
   }
