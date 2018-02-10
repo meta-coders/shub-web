@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import injectSheet from 'react-jss';
+import { connect } from 'react-redux';
+
 
 const styles = {
   sideBarButton: {
@@ -25,20 +27,30 @@ const styles = {
       justifyContent: 'center',
     },
   },
+  sideBarButtonActive: {
+    boxShadow: '0.2vw 0.2vh 1vw #888 inset',
+    composes: '$sideBarButton',
+    background: '#50AF80',
+    '& span': {
+      color: 'white',
+    },
+  },
 
 };
 
 class SideBarButton extends Component {
   render() {
-    if (localStorage.getItem('sessionId')) {
-      console.log('true');
-    } else {
-      console.log('false');
-    }
+    const { classes, pathname, onLinkClick, pathnameStore } = this.props;
+    console.log(pathnameStore + ':' + pathname);
     return (
       <Link
-        className={this.props.classes.sideBarButton}
+        className={
+          pathnameStore !== pathname ?
+            classes.sideBarButton :
+            classes.sideBarButtonActive
+        }
         to={{ pathname: this.props.pathname }}
+        onClick={onLinkClick(pathname)}
       >
         <img src={this.props.src} />
         {this.props.name ? <span>{this.props.name}</span> : <Fragment />}
@@ -53,6 +65,21 @@ SideBarButton.propTypes = {
   pathname: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
   name: PropTypes.string,
+  onLinkClick: PropTypes.func,
+  pathnameStore: PropTypes.string,
 };
 
-export default (injectSheet(styles)(SideBarButton));
+export default connect(
+  state => ({
+    pathnameStore: state.pathname,
+  }),
+  dispatch => ({
+    onLinkClick: pathname => () => {
+      console.log(pathname);
+      dispatch({
+        type: 'CHANGE_PATH',
+        pathname,
+      });
+    },
+  })
+)(injectSheet(styles)(SideBarButton));

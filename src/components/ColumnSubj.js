@@ -8,8 +8,15 @@ const styles = {
     flexDirection: 'column',
     '& > div:first-child': {
       background: '#7F94B5',
-      boxShadow: '0 1px 1px #888',
       fontSize: '1.1vw',
+    },
+  },
+  columnActive: {
+    composes: '$column',
+    boxShadow: '0vw 0vh 2vw #777',
+    '& > div:first-child': {
+      background: '#607896',
+      color: '#fff',
     },
   },
   cell1: {
@@ -64,6 +71,7 @@ const numbToWeekday = (numb) => {
 class ColumnSubj extends Component {
   render() {
     const { classes, data, max, weekday } = this.props;
+    const currentDayFlag = (new Date().getDay() === weekday);
     const cells = structCells(data, max).map((item, index) => (
       <div
         key={item.subject}
@@ -75,7 +83,7 @@ class ColumnSubj extends Component {
       </div>
     ));
     return (
-      <div className={classes.column}>
+      <div className={!currentDayFlag ? classes.column : classes.columnActive}>
         {
           <div className={classes.cell1}>
             {numbToWeekday(weekday)}
