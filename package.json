@@ -33,16 +33,16 @@
   },
   "proxy": {
     "/api/getSchedule.json": {
-      "target": "http://35.198.146.54"
+      "target": "http://207.154.253.221"
     },
     "/api/getEvents.json": {
-      "target": "http://35.198.146.54"
+      "target": "http://207.154.253.221"
     },
     "/auth/signIn.json": {
-      "target": "http://35.198.146.54"
+      "target": "http://207.154.253.221"
     },
     "/auth/signOut.json": {
-      "target": "http://35.198.146.54"
+      "target": "http://207.154.253.221"
     }
   }
 }

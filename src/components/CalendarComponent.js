@@ -12,7 +12,7 @@ const eventsAction = Actions.eventsAction;
 const styles = {
   calendarContainer: {
     marginLeft: '2vw',
-    height: '70vh',
+    height: 'fill-available',
     boxShadow: '2px 2px 4px #888',
     background: '#B1BBCC',
     display: 'flex',

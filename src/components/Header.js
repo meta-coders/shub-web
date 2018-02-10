@@ -28,14 +28,14 @@ const styles = {
   rightSide: {
     height: 'inherit',
     float: 'right',
-    width: '20%',
+    width: '13%',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingRight: '0vw',
   },
   warning: {
-    height: '60%',
+    height: '40%',
     margin: 'auto',
   },
   singIn: {
@@ -46,10 +46,9 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    paddingRight: '5%',
   },
   message: {
-    fontSize: '1.5vw',
+    fontSize: '1.2vw',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',

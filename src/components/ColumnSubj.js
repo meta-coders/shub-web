@@ -7,10 +7,9 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     '& > div:first-child': {
-      position: 'relative',
-      zIndex: '10',
       background: '#7F94B5',
       boxShadow: '0 1px 1px #888',
+      fontSize: '1.1vw',
     },
   },
   cell1: {
@@ -18,24 +17,20 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    height: '7vh',
+    height: 'fill-available',
     textAlign: 'center',
     fontSize: '1.5vw',
   },
   cell2: {
+    composes: '$cell1',
     background: '#B1BBCC',
     display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    height: '7vh',
-    textAlign: 'center',
-    fontSize: '1.5vw',
   },
   time: {
-    fontSize: '0.8vw',
+    fontSize: '0.6vw',
   },
   id: {
-    fontSize: '1vw',
+    fontSize: '0.9vw',
   },
 };
 

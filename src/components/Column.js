@@ -6,39 +6,37 @@ const styles = {
   column: {
     display: 'flex',
     flexDirection: 'column',
+    position: 'relative',
+    zIndex: '10',
+    boxShadow: '3px 0px 2px #888',
     '& > div:first-child': {
       position: 'relative',
       zIndex: '10',
       background: '#7F94B5',
-      boxShadow: '0 1px 1px #888',
+      borderRadius: '0',
     },
   },
   cell1: {
-    borderRight: '1px solid #93A1B6',
     background: '#93A1B6',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    height: '7vh',
     textAlign: 'center',
+    height: 'fill-available',
     '& img': {
-      height: '5vh',
+      height: '4vh',
     },
   },
   cell2: {
-    borderRight: '1px solid #93A1B6',
     background: '#B1BBCC',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    height: '7vh',
-    textAlign: 'center',
+    composes: '$cell1',
   },
   time: {
     fontSize: '0.8vw',
   },
   id: {
-    fontSize: '2vw',
+    fontSize: '1vw',
+    marginBottom: '0.5vh',
   },
 };
 

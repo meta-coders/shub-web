@@ -8,7 +8,7 @@ button{
   background: inherit;
   border: none;
   font-family: inherit;
-  line-height: 3vw;
+  line-height: 3vh;
 }
 .react-calendar,
 .react-calendar *,
@@ -28,19 +28,19 @@ button{
 .react-calendar__navigation {
   margin: auto;
   width:90%;
-  padding-top: 1vw;
-  padding-bottom: 1vw;
+  margin-top: 1vh;
 }
 .react-calendar__navigation__label {
   text-transform: capitalize;
+  margin: 0 3vw;
 }
 .react-calendar__navigation button {
   opacity: 0.4;
   background: none;
   font-weight: 300;
   font-size: 1.9vw;
-  padding-top: 1vw;
-  padding-bottom: 1vw;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
 }
 .react-calendar__navigation button:not([disabled]):hover,
 .react-calendar__navigation button:not([disabled]):focus {
@@ -55,15 +55,15 @@ button{
 }
 .react-calendar__month-view__days > button {
   font-size: 1vw;
-  padding-top: 1vw;
-  padding-bottom: 1vw;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
 }
 .react-calendar__month-view__weekdays {
   text-align: center;
   text-transform: uppercase;
   font-weight: bold;
-  padding-top: 1vw;
-  padding-bottom: 1vw;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
   font-size: 1vw;
 }
 .react-calendar__month-view__weekdays__weekday {
