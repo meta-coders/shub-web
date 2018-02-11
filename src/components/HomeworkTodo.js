@@ -12,7 +12,7 @@ const homeworkAction = Actions.homeworkAction;
 const styles = {
   scrollDiv: {
     overflowY: 'scroll',
-    background: '#B1BBCC',
+    background: 'var(--table-bg-color)',
     paddingRight: '5%',
     borderRadius: '5px',
     boxShadow: '2px 2px 4px #888',
@@ -20,7 +20,7 @@ const styles = {
       display: 'none',
     },
     '& *': {
-      color: '#3d628f',
+      color: 'var(--table-color)',
     },
   },
   dayContainer: {
@@ -48,7 +48,7 @@ const styles = {
   homework: {
     display: 'grid',
     gridTemplateColumns: '6fr 1fr',
-    background: '#93A1B6',
+    background: 'var(--table-cell1-bg-color)',
     padding: '1vh',
     borderRadius: '5px',
     margin: '2vh 0',
@@ -69,7 +69,7 @@ const styles = {
     borderRadius: '100%',
     margin: 'auto',
     height: '2.5vw',
-    background: '#e67e22',
+    background: '#b233aa',
   },
 };
 

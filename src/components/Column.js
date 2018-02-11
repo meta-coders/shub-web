@@ -11,12 +11,12 @@ const styles = {
     '& > div:first-child': {
       position: 'relative',
       zIndex: '10',
-      background: '#7F94B5',
+      background: 'var(--table-header-bg-color)',
       borderRadius: '0',
     },
   },
   cell1: {
-    background: '#93A1B6',
+    background: 'var(--table-cell1-bg-color)',
     borderRight: 'solid 0.5px #B1BBCC',
     display: 'flex',
     flexDirection: 'column',
@@ -29,7 +29,7 @@ const styles = {
     },
   },
   cell2: {
-    background: '#B1BBCC',
+    background: 'var(--table-cell2-bg-color)',
     composes: '$cell1',
   },
   time: {

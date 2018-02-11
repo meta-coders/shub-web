@@ -27,8 +27,8 @@ const data = [
 
 const styles = {
   main: {
-    backgroundColor: '#C5D0D9',
-    color: '#3d628f',
+    backgroundColor: 'var(--bg-color)',
+    color: 'var(--table-color)',
     height: '89vh',
     padding: '6vh 2vw 6vh 2vw',
     boxSizing: 'border-box',
@@ -43,7 +43,7 @@ const styles = {
       fontSize: '4vh',
       padding: '4vh 0',
       textAlign: 'center',
-      backgroundColor: '#7F94B5',
+      backgroundColor: 'var(--table-header-bg-color)',
       boxShadow: '0 3px 5px grey',
     },
   },

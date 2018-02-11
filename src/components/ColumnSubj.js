@@ -7,7 +7,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     '& > div:first-child': {
-      background: '#7F94B5',
+      background: 'var(--table-header-bg-color)',
       fontSize: '1.1vw',
     },
   },
@@ -20,7 +20,7 @@ const styles = {
     },
   },
   cell1: {
-    background: '#93A1B6',
+    background: 'var(--table-cell1-bg-color)',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -30,7 +30,7 @@ const styles = {
   },
   cell2: {
     composes: '$cell1',
-    background: '#B1BBCC',
+    background: 'var(--table-cell2-bg-color)',
     display: 'flex',
   },
   time: {

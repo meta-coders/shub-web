@@ -46,12 +46,12 @@ button{
 .react-calendar__navigation button:not([disabled]):focus {
   opacity: 0.9;
   transition: 0.2ms;
-  background-color: #2A4872;
-  color: white;
+  background-color: var(--calendar-active-bg-color);
+  color: var(--calendar-color);
 }
 .react-calendar__navigation button[disabled] {
-  background-color: #2A4872;
-  color: white;
+  background-color: var(--calendar-active-bg-color);
+  color: var(--calendar-color);
 }
 .react-calendar__month-view__days > button {
   font-size: 1vw;
@@ -84,7 +84,7 @@ button{
   font-size: 1vw;
 }
 .react-calendar__month-view__days__day--weekend {
-  color: #E04F5F;
+  color: var(--calendar-weekend-color);
 }
 .react-calendar__month-view__days__day--neighboringMonth {
   color: #2A4872;
@@ -100,32 +100,32 @@ button{
   background: none;
 }
 button.react-calendar__tile[disabled] {
-  background-color: #2A4872;
-  color: white;
+  background-color: var(--calendar-active-bg-color);
+  color: var(--calendar-color);
 }
 button.react-calendar__tile:not([disabled]):hover,
 button.react-calendar__tile:not([disabled]):focus {
-  background-color: #2A4872;
-  color: white;
+  background-color: var(--calendar-active-bg-color);
+  color: var(--calendar-color);
 }
 .react-calendar__tile--hasActive {
-  background: #2A4872;
-  color: white;
+  background: var(--calendar-active-bg-color);
+  color: var(--calendar-color);
 }
 button.react-calendar__tile--hasActive:not([disabled]):hover,
 button.react-calendar__tile--hasActive:not([disabled]):focus {
-  background: #2A4872;
-  color: white;
+  background: var(--calendar-active-bg-color);
+  color: var(--calendar-color);
 }
 .react-calendar__tile--active {
-  background: #2A4872;
-  color: white;
+  background: var(--calendar-active-bg-color);
+  color: var(--calendar-color);
 }
 button.react-calendar__tile--active:not([disabled]):hover,
 button.react-calendar__tile--active:not([disabled]):focus {
-  background: #2A4872;
-  color: white;
+  background: var(--calendar-active-bg-color);
+  color: var(--calendar-color);
 }
 .react-calendar--selectRange .react-calendar__tile--hover {
-  background-color: #2A4872;
+  background-color: var(--calendar-active-bg-color);
 }
