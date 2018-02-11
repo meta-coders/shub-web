@@ -1,21 +1,55 @@
 const Actions = {
-  homeworkAction: (homeworkId, sessionId, homework) => (dispatch) => {
-    const newHomework = homework.map((task) => {
-      if (task.id !== homeworkId) {
-        return task;
-      } else {
-        const newTask = { ...task, done: !task.done };
-        return newTask;
+  homeworkAction: (homeworkId, sessionId) => (dispatch) => {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    const myInit = {
+      method: 'POST',
+      body: JSON.stringify({
+        sessionId,
+        homeworkId,
+      }),
+      headers,
+    };
+
+    fetch('api/getHomework.json', myInit).catch((err) => {
+      console.log(err);
+      dispatch({
+        type: 'FETCH_HOMEWORK',
+        data: [],
+      });
+    }).then(
+      (response) => {
+        console.log('FETCH_HOMEWORK');
+        return response.json();
+      }).then(
+      (result) => {
+        console.log(result);
+        const data = result;
+        const dispatchObj = {
+          type: 'FETCH_HOMEWORK',
+          data,
+        };
+        console.log(dispatchObj);
+        dispatch(dispatchObj);
       }
-    }
     );
-    // let currentTask = homework.filter((task, i) => task.id===homeworkId);
-    console.log(sessionId);
-    dispatch({
-      type: 'FETCH_HOMEWORK',
-      data: newHomework,
-    });
   },
+
+
+  // const newHomework = homework.map((task) => {
+  //   if (task.id !== homeworkId) {
+  //     return task;
+  //     } else {
+  //       const newTask = { ...task, done: !task.done };
+  //       return newTask;
+  //     }
+  //   });
+  // console.log(sessionId);
+  // dispatch({
+  //   type: 'FETCH_HOMEWORK',
+  //   data: newHomework,
+  // });
   timetableAction: sessionId => (dispatch) => {
     console.log('timetableAction' + sessionId);
 
@@ -37,7 +71,7 @@ const Actions = {
         data: [],
       });
     }).then((response) => {
-      console.log('Fetch');
+      console.log('FETCH_SCHEDULE_POST');
       return response.json();
     }).then(
       (result) => {
@@ -78,7 +112,7 @@ const Actions = {
         data: [],
       });
     }).then((response) => {
-      console.log('Fetch');
+      console.log('FETCH_EVENT_POST');
       return response.json();
     }).then(
       (result) => {
@@ -116,7 +150,7 @@ const Actions = {
         alert('You need to log in!');
       }
     ).then((response) => {
-      console.log('Fetch');
+      console.log('POST_LOGIN_INFO');
       return response.json();
     }).then(
       (result) => {
@@ -147,7 +181,7 @@ const Actions = {
     };
 
     fetch('/auth/signOut.json', myInit).then(() => {
-      console.log('Fetch');
+      console.log('POST_LOGOUT_INFO');
       return {};
     }).then(
       () => {

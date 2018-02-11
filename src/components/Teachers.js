@@ -30,7 +30,6 @@ const styles = {
     backgroundColor: 'var(--bg-color)',
     color: 'var(--table-color)',
     height: '89vh',
-    width: '94vw',
     padding: '6vh 2vw 6vh 2vw',
     boxSizing: 'border-box',
     display: 'flex',

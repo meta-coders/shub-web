@@ -8,7 +8,6 @@ const styles = {
     flexDirection: 'column',
     position: 'relative',
     zIndex: '10',
-    boxShadow: '3px 0px 2px #888',
     '& > div:first-child': {
       position: 'relative',
       zIndex: '10',
@@ -18,13 +17,15 @@ const styles = {
   },
   cell1: {
     background: 'var(--table-cell1-bg-color)',
+    borderRight: 'solid 0.5px #B1BBCC',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     textAlign: 'center',
     height: 'fill-available',
     '& img': {
-      height: '4vh',
+      width: '3vw',
+      margin: 'auto',
     },
   },
   cell2: {
