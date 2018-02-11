@@ -11,10 +11,10 @@ const logOutAction = Actions.logOutAction;
 
 const styles = {
   header: {
-    background: '#7F94B5',
+    background: 'var(--header-bg-color)',
     width: '100%',
     height: '11vh',
-    color: '#607896',
+    color: 'var(--header-color)',
   },
   leftSide: {
     height: 'inherit',

@@ -44,11 +44,11 @@ const styles = {
     width: '8vw',
     display: 'flex',
     flexDirection: 'column',
-    background: '#3d628f',
+    background: 'var(--sidebar-bg-color)',
     '& :hover': {
-      background: '#50AF80',
+      background: 'var(--sidebar-active-bg-color)',
       '& span': {
-        color: 'white',
+        color: 'var(--sidebar-active-color)',
       },
     },
   },
