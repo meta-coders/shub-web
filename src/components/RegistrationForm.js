@@ -16,13 +16,13 @@ const styles = {
   container: {
     borderRadius: '10px',
     width: '400px',
-    background: '#3d628f',
+    background: 'var(--login-bg-color)',
     paddingTop: '30px',
     margin: 'auto',
   },
   sign: {
-    background: '#2c3e50',
-    color: 'white',
+    background: 'var(--login-button-bg-color)',
+    color: 'var(--login-button-color)',
     width: '100%',
     height: '100%',
     fontSize: '25px',
@@ -31,7 +31,7 @@ const styles = {
   },
   signActive: {
     composes: '$sign',
-    background: '#27ae60',
+    background: 'var(--login-button-active-bg-color)',
   },
   main: {
     verticalAlign: 'center',
@@ -39,12 +39,12 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     flex: '0 1 auto',
-    background: '#ecf0f1',
+    background: 'var(--bg-color)',
   },
   label: {
     width: '30%',
     marginLeft: '5%',
-    color: '#ecf0f1',
+    color: 'var(--login-color)',
   },
   loginContainer: {
     display: 'flex',

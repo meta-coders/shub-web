@@ -24,7 +24,7 @@ const styles = {
     borderColor: '#7f8c8d',
     textAlign: 'center',
     textDecoration: 'none',
-    backgroundColor: '#ffff',
+    backgroundColor: '',
     '&:last-child': {
       borderTopRightRadius: '25px',
     },
@@ -37,15 +37,15 @@ const styles = {
   container: {
     borderRadius: '10px',
     width: '30vw',
-    background: '#3d628f',
+    background: 'var(--login-bg-color)',
     height: 'fitContent',
     paddingTop: '3vh',
     margin: 'auto',
     boxShadow: '2px 2px 2px #888',
   },
   sign: {
-    background: '#2c3e50',
-    color: 'white',
+    background: 'var(--login-button-bg-color)',
+    color: 'var(--login-button-color)',
     width: '100%',
     height: '100%',
     fontSize: '1.9vw',
@@ -54,20 +54,20 @@ const styles = {
   },
   signActive: {
     composes: '$sign',
-    background: '#27ae60',
+    background: 'var(--login-button-active-bg-color)',
   },
   main: {
     height: '89vh',
     display: 'flex',
     flexDirection: 'column',
     flex: '0 1 auto',
-    background: '#ecf0f1',
+    background: 'var(--bg-color)',
   },
   label: {
     height: '2vh',
     width: '30%',
     fontSize: '1.4vw',
-    color: '#ecf0f1',
+    color: 'var(--login-color)',
   },
   loginContainer: {
     display: 'flex',

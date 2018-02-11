@@ -14,7 +14,7 @@ const styles = {
     marginLeft: '2vw',
     height: 'fill-available',
     boxShadow: '2px 2px 4px #888',
-    background: '#B1BBCC',
+    background: 'var(--table-bg-color)',
     display: 'flex',
     flexDirection: 'column',
     '& ul': {
@@ -29,10 +29,10 @@ const styles = {
     padding: '5%',
     listStyle: 'none',
     fontSize: '2vh',
-    color: '#607896',
+    color: 'var(--calendar-list-color)',
   },
   events: {
-    overflow: 'scroll',
+    overflow: 'hidden',
   },
   date: {
     display: 'flex',

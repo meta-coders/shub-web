@@ -4,4 +4,25 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Comfortaa';
+  --bg-color: #ECF0F1;
+  --header-bg-color: #7F94B5;
+  --header-color: #607896;
+  --sidebar-bg-color: #3D628F;
+  --sidebar-color: #92A6C2;
+  --sidebar-active-bg-color: #50AF80;
+  --sidebar-active-color: #FFFFFF;
+  --login-bg-color: #3D628F;
+  --login-color: #ECF0F1;
+  --login-button-bg-color: #2C3E50;
+  --login-button-active-bg-color: #27AE60;
+  --login-button-color: #FFFFFF;
+  --table-bg-color: #B1BBCC;
+  --table-color: #3D628F;
+  --table-header-bg-color: #7F94B5;
+  --table-cell1-bg-color: #93A1B6;
+  --table-cell2-bg-color: #B1BBCC;
+  --calendar-active-bg-color: #2A4872;
+  --calendar-color: #FFFFFF;
+  --calendar-weekend-color: #E04F5F;
+  --calendar-list-color: #607896;
 }

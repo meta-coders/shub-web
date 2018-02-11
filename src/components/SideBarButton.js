@@ -15,7 +15,7 @@ const styles = {
       height: '50%',
     },
     '& span': {
-      color: '#92a6c2',
+      color: 'var(--sidebar-color)',
       height: '37.5%',
       textAlign: 'center',
       display: 'flex',
