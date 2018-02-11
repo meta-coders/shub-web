@@ -1,5 +1,5 @@
 const Actions = {
-  homeworkAction: (homeworkId, sessionId) => (dispatch) => {
+  homeworkAction: (homeworkId, sessionId, done) => (dispatch) => {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
@@ -8,6 +8,7 @@ const Actions = {
       body: JSON.stringify({
         sessionId,
         homeworkId,
+        done: !done,
       }),
       headers,
     };

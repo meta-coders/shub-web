@@ -74,10 +74,16 @@ const styles = {
 };
 
 class HomeworkTodo extends Component {
+  componentDidMount() {
+    this.props.onHomeworkClick(null, localStorage.getItem('sessionId'), !null);
+  }
+
   handleDoneClick = (
     homeworkId,
-    sessionId
-  ) => () => this.props.onHomeworkClick(homeworkId, sessionId);
+    sessionId,
+    done,
+  ) => () => this.props.onHomeworkClick(homeworkId, sessionId, done);
+
   render() {
     const { classes, homework, sessionId } = this.props;
     const dates = homework.map(task => task.date).sort((a, b) => a > b);
@@ -104,9 +110,9 @@ class HomeworkTodo extends Component {
               {homework.filter(x => x.date === date).map(task => (
                 <div
                   className={classes.homework}
-                  key={task.desc}
+                  key={task.description}
                 >
-                  <h1 className={classes.task}>{task.desc}</h1>
+                  <h1 className={classes.task}>{task.description}</h1>
                   {
                     task.done === 'waiting' ? (
                       <img
@@ -115,6 +121,7 @@ class HomeworkTodo extends Component {
                         onClick={this.handleDoneClick(
                           task.id,
                           sessionId,
+                          task.done,
                         )}
                       />
                     ) :
@@ -125,6 +132,7 @@ class HomeworkTodo extends Component {
                           onClick={this.handleDoneClick(
                             task.id,
                             sessionId,
+                            task.done,
                           )}
                         />
                       ) : (
@@ -134,6 +142,7 @@ class HomeworkTodo extends Component {
                           onClick={this.handleDoneClick(
                             task.id,
                             sessionId,
+                            task.done,
                           )}
                         />
                       )}
@@ -160,8 +169,8 @@ export default connect(
     sessionId: state.sessionInfo.sessionId,
   }),
   dispatch => ({
-    onHomeworkClick: (homeworkId, sessionId) => {
-      dispatch(homeworkAction(homeworkId, sessionId));
+    onHomeworkClick: (homeworkId, sessionId, done) => {
+      dispatch(homeworkAction(homeworkId, sessionId, done));
     },
   })
 )(injectSheet(styles)(HomeworkTodo));
