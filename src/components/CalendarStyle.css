@@ -87,7 +87,7 @@ button{
   color: var(--calendar-weekend-color);
 }
 .react-calendar__month-view__days__day--neighboringMonth {
-  color: #2A4872;
+  color: var(--calendar-active-bg-color);
   opacity: 0.4;
 }
 .react-calendar__year-view .react-calendar__tile,

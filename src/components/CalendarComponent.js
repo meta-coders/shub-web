@@ -32,7 +32,7 @@ const styles = {
     color: 'var(--calendar-list-color)',
   },
   events: {
-    overflow: 'hidden',
+    overflow: 'scroll',
   },
   date: {
     display: 'flex',
@@ -120,7 +120,7 @@ class CalendarComponent extends Component {
         />
         <div className={classes.events}>
           <ul>
-            {events.map(this.renderEvents)}
+            {events.sort((a, b) => a.date > b.date).map(this.renderEvents)}
           </ul>
         </div>
       </div>
