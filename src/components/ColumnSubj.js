@@ -13,6 +13,8 @@ const styles = {
   },
   columnActive: {
     composes: '$column',
+    position: 'relative',
+    zIndex: '9',
     boxShadow: '0vw 0vh 2vw #777',
     '& > div:first-child': {
       background: '#607896',

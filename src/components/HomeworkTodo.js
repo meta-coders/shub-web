@@ -110,7 +110,7 @@ class HomeworkTodo extends Component {
               {homework.filter(x => x.date === date).map(task => (
                 <div
                   className={classes.homework}
-                  key={task.description}
+                  key={task.id}
                 >
                   <h1 className={classes.task}>{task.description}</h1>
                   {
