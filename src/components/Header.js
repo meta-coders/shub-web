@@ -60,6 +60,9 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'center',
     paddingLeft: '5%',
+    '& span': {
+      fontSize: '1.2vw',
+    },
   },
   pinContainer: {
     height: '11vh',

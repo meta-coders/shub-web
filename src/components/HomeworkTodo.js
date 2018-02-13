@@ -4,10 +4,6 @@ import injectSheet from 'react-jss';
 import done from '../icons/done2.svg';
 import cross from '../icons/cross.svg';
 import hourglass from '../icons/hourglass.svg';
-import { connect } from 'react-redux';
-import Actions from '../actions/index';
-
-const homeworkAction = Actions.homeworkAction;
 
 const styles = {
   scrollDiv: {
@@ -163,14 +159,4 @@ HomeworkTodo.propTypes = {
   sessionId: PropTypes.string,
 };
 
-export default connect(
-  state => ({
-    homework: state.homeWork,
-    sessionId: state.sessionInfo.sessionId,
-  }),
-  dispatch => ({
-    onHomeworkClick: (homeworkId, sessionId, done) => {
-      dispatch(homeworkAction(homeworkId, sessionId, done));
-    },
-  })
-)(injectSheet(styles)(HomeworkTodo));
+export default (injectSheet(styles)(HomeworkTodo));
