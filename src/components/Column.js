@@ -13,6 +13,7 @@ const styles = {
       zIndex: '10',
       background: 'var(--table-header-bg-color)',
       borderRadius: '0',
+      maxHeight: '10vh',
     },
   },
   cell1: {

@@ -45,7 +45,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     background: 'var(--sidebar-bg-color)',
-    '& :hover': {
+    '& >:hover': {
       background: 'var(--sidebar-active-bg-color)',
       '& span': {
         color: 'var(--sidebar-active-color)',

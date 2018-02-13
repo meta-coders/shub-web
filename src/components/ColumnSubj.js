@@ -9,13 +9,14 @@ const styles = {
     '& > div:first-child': {
       background: 'var(--table-header-bg-color)',
       fontSize: '1.1vw',
+      maxHeight: '10vh',
     },
   },
   columnActive: {
     composes: '$column',
     position: 'relative',
     zIndex: '9',
-    boxShadow: '0vw 0vh 2vw #777',
+    boxShadow: '0vw 0vh 1vw #777',
     '& > div:first-child': {
       background: '#607896',
       color: '#fff',

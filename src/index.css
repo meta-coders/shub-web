@@ -26,3 +26,11 @@ body {
   --calendar-weekend-color: #E04F5F;
   --calendar-list-color: #607896;
 }
+
+li {
+  list-style: none;
+}
+
+ul {
+  padding: 0;
+}

@@ -9,6 +9,7 @@
     "react-dom": "^16.2.0",
     "react-jss": "^8.2.1",
     "react-redux": "^5.0.6",
+    "react-responsive-carousel": "^3.1.33",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
     "react-scripts": "1.1.0",
@@ -46,6 +47,9 @@
       "target": "http://207.154.253.221"
     },
     "/auth/signOut.json": {
+      "target": "http://207.154.253.221"
+    },
+    "api/getPinnedMessages.json": {
       "target": "http://207.154.253.221"
     }
   }

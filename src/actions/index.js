@@ -1,4 +1,33 @@
 const Actions = {
+  getPinnedAction: sessionId => (dispatch) => {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+
+    const myInit = {
+      method: 'POST',
+      body: JSON.stringify({
+        sessionId,
+      }),
+      headers,
+    };
+
+    fetch('api/getPinnedMessages.json', myInit).then(
+      (response) => {
+        console.log('FETCH_PINNED');
+        return response.json();
+      }).then(
+      (result) => {
+        console.log(result);
+        const data = result;
+        const dispatchObj = {
+          type: 'FETCH_PINNED',
+          data,
+        };
+        console.log(dispatchObj);
+        dispatch(dispatchObj);
+      }
+    );
+  },
   homeworkAction: (homeworkId, sessionId, done) => (dispatch) => {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');

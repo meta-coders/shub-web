@@ -6,9 +6,10 @@ import warning from '../icons/warning.svg';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Actions from '../actions/index';
+import { Carousel } from 'react-responsive-carousel';
 
 const logOutAction = Actions.logOutAction;
-
+const getPinnedAction = Actions.getPinnedAction;
 const styles = {
   header: {
     background: 'var(--header-bg-color)',
@@ -20,25 +21,30 @@ const styles = {
     height: 'inherit',
     float: 'left',
     width: '40%',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
     paddingLeft: '2vw',
+    overflow: 'hidden',
+    '& button': {
+      display: 'none',
+    },
+    '& ul': {
+      margin: '0',
+    },
   },
   rightSide: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
     height: 'inherit',
     float: 'right',
     width: '8%',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
     paddingRight: '2vw',
   },
   warning: {
-    height: '40%',
+    height: '6vh',
     margin: 'auto 0',
   },
   singIn: {
+    marginLeft: '1vw',
     height: '100%',
   },
   name: {
@@ -55,38 +61,55 @@ const styles = {
     justifyContent: 'center',
     paddingLeft: '5%',
   },
+  pinContainer: {
+    height: '11vh',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    '& span': {
+      textAlign: 'left',
+      margin: 'auto 0 auto 1vw',
+    },
+  },
 };
 
 class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      message: this.props.message,
-    };
-  }
   componentDidMount() {
-    this.props.onHeaderDidMount();
+    this.props.onHeaderDidMount(localStorage.getItem('sessionId'));
   }
   handleLogOut = () => {
     this.props.onLogOutClick(this.props.sessionInfo.sessionId);
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, pinned } = this.props;
+    console.log(pinned);
     return (
       <div className={classes.header}>
-        <div className={classes.leftSide}>
-          {localStorage.getItem('sessionId') !== 'false' ?
-            <img className={classes.warning} src={warning} /> :
-            <Fragment />
-          }
-          <span className={classes.message}>
-            {localStorage.getItem('sessionId') !== 'false' ?
-              this.state.message :
-              ''
+        {localStorage.getItem('sessionId') !== 'false' ? (
+          <Carousel
+            className={classes.leftSide}
+            autoPlay
+            interval={3000}
+            infiniteLoop axis="vertical"
+            showStatus={false} showIndicators={false} showArrows={false}
+            showThumbs={false}
+          >
+            {
+              pinned.map(pin => (
+                <div className={classes.pinContainer} key={pin.message}>
+                  <img className={classes.warning} src={warning} />
+                  <span >
+                    {pin.message}
+                  </span>
+                </div>
+              ))
             }
-          </span>
-        </div>
+
+          </Carousel>
+        ) :
+          <Fragment />
+        }
         <div className={classes.rightSide}>
           <span className={classes.name}>{this.props.name}</span>
           <Link
@@ -108,20 +131,26 @@ class Header extends Component {
 
 Header.propTypes = {
   name: PropTypes.string.isRequired,
-  message: PropTypes.string.isRequired,
   onHeaderDidMount: PropTypes.func.isRequired,
   onLogOutClick: PropTypes.func.isRequired,
   sessionInfo:  PropTypes.string.isRequired,
   classes: PropTypes.object.isRequired,
+  pinned: PropTypes.array,
 };
 
 export default connect(
   state => ({
     name: state.sessionInfo.name,
     sessionInfo: state.sessionInfo,
+    pinned: state.pinned,
   }),
   dispatch => ({
-    onHeaderDidMount: () => dispatch({ type: 'RENDER_PAGE' }),
+    onHeaderDidMount: (sessionId) => {
+      dispatch({ type: 'RENDER_PAGE' });
+      if (sessionId !== 'false') {
+        dispatch(getPinnedAction(sessionId));
+      }
+    },
     onLogOutClick: (sessionId) => {
       dispatch(logOutAction(sessionId));
     },
