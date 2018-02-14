@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import injectSheet from 'react-jss';
 import PropTypes from 'prop-types';
 import Checkbox from 'rc-checkbox';
+import 'rc-checkbox/assets/index.css';
 
 function arrItmesToObjKeys(arr) {
 
@@ -43,22 +44,23 @@ class CheckBoxHomeWork extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      lessons: {},
+      lessons: [],
     };
   }
 
   func = (subject, value) => {
-    const objArr = {};
-    this.props.subjects.forEach(
-      (item) => {
-        if (item === subject) {
-          objArr[item] = value;
-        } else {
-          objArr[item] = false;
-        }
-      });
-    this.setState({ lessons: objArr });
-    // this.setState({ lessons.subject: value});
+    const arr = [];
+    arr.push(subject)
+    this.setState((prevState) => {
+      let newState = [];
+      if (value) {
+        newState = prevState.lessons.push(subject);
+      } else {
+        const index = this.state.lessons.indexOf(subject);
+        newState = prevState.lessons.splice(index, 1);
+      };
+      return newState;
+    });
   }
 
   render() {
@@ -69,10 +71,9 @@ class CheckBoxHomeWork extends Component {
           subjects.map(subject => (
             <div key={subject} className={classes.select}>
               <Checkbox
-                checked={this.state.lessons[subject]}
+                checked={this.state.lessons.includes(subject)}
                 onChange={(e) => {
                   this.func(subject, e.target.checked);
-                  console.log(e.target.checked);
                   console.log(this.state.lessons);
                 }}
               />
