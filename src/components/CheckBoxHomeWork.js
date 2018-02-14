@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import injectSheet from 'react-jss';
 import PropTypes from 'prop-types';
+import Checkbox from 'rc-checkbox';
 
 function arrItmesToObjKeys(arr) {
 
@@ -39,6 +40,27 @@ const styles = {
 };
 
 class CheckBoxHomeWork extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      lessons: {},
+    };
+  }
+
+  func = (subject, value) => {
+    const objArr = {};
+    this.props.subjects.forEach(
+      (item) => {
+        if (item === subject) {
+          objArr[item] = value;
+        } else {
+          objArr[item] = false;
+        }
+      });
+    this.setState({ lessons: objArr });
+    // this.setState({ lessons.subject: value});
+  }
+
   render() {
     const { classes, subjects } = this.props;
     return (
@@ -46,10 +68,12 @@ class CheckBoxHomeWork extends Component {
         {
           subjects.map(subject => (
             <div key={subject} className={classes.select}>
-              <input
-                type="checkbox"
+              <Checkbox
+                checked={this.state.lessons[subject]}
                 onChange={(e) => {
+                  this.func(subject, e.target.checked);
                   console.log(e.target.checked);
+                  console.log(this.state.lessons);
                 }}
               />
               <span>
