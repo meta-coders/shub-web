@@ -11,20 +11,20 @@ body {
   --sidebar-color: #92A6C2;
   --sidebar-active-bg-color: #50AF80;
   --sidebar-active-color: #FFFFFF;
-  --login-bg-color: #3D628F;
-  --login-color: #ECF0F1;
+  --login-bg-color: var(--sidebar-bg-color);
+  --login-color: var(--bg-color);
   --login-button-bg-color: #2C3E50;
   --login-button-active-bg-color: #27AE60;
   --login-button-color: #FFFFFF;
   --table-bg-color: #B1BBCC;
-  --table-color: #3D628F;
-  --table-header-bg-color: #7F94B5;
+  --table-color: var(--sidebar-bg-color);
+  --table-header-bg-color: var(--header-bg-color);
   --table-cell1-bg-color: #93A1B6;
-  --table-cell2-bg-color: #B1BBCC;
+  --table-cell2-bg-color: var(--table-bg-color);
   --calendar-active-bg-color: #2A4872;
   --calendar-color: #FFFFFF;
   --calendar-weekend-color: #E04F5F;
-  --calendar-list-color: #607896;
+  --calendar-list-color: var(--header-color);
 }
 
 li {

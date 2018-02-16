@@ -7,8 +7,46 @@ import PropTypes from 'prop-types';
 
 const homeworkAction = Actions.homeworkAction;
 
+const arrOfHomeWorksToUniqSubjArr = (homework) => {
+  const subjectsSet = new Set(homework.map(item => item.subject));
+  const subjects = [...subjectsSet];
+  return subjects;
+};
 
 class Homework extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      lessons: arrOfHomeWorksToUniqSubjArr(this.props.homework),
+    };
+  }
+
+
+
+  // componentWillUpdate() {
+  //   const arrSubj = arrOfHomeWorksToUniqSubjArr(this.props.homework)
+  //   this.setState({lessons: arrSubj});
+  // }
+
+  componentDidUpdate = () => {
+    console.log(this.state.lessons);
+  }
+
+  handleCheckBoxClick = (subject, value) => {
+    const arr = [];
+    arr.push(subject);
+    this.setState((prevState) => {
+      let newState = [];
+      if (value) {
+        newState = prevState.lessons.push(subject);
+      } else {
+        const index = this.state.lessons.indexOf(subject);
+        newState = prevState.lessons.splice(index, 1);
+      }
+      return newState;
+    });
+  }
+
 
   render() {
     const styles = {
@@ -20,16 +58,22 @@ class Homework extends Component {
       gridTemplateColumns: '2fr 1fr',
     };
     const { homework, sessionId, onHomeworkClick } = this.props;
-    const subjectsSet = new Set(homework.map(item => item.subject));
-    const subjects = [...subjectsSet];
+    const subjects = arrOfHomeWorksToUniqSubjArr(homework);
+    const filteredHomework = homework.filter(
+      task => this.state.lessons.includes(task.subject)
+    );
     return (
       <div style={styles}>
         <HomeworkTodo
-          homework={homework}
+          homework={filteredHomework}
           sessionId={sessionId}
           onHomeworkClick={onHomeworkClick}
         />
-        <CheckBoxHomeWork subjects={subjects} />
+        <CheckBoxHomeWork
+          subjects={subjects}
+          onCheckBoxClick={this.handleCheckBoxClick}
+          lessons={this.state.lessons}
+        />
       </div>
     );
   }

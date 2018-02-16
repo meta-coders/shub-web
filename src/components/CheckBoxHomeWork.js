@@ -4,17 +4,21 @@ import PropTypes from 'prop-types';
 import Checkbox from 'rc-checkbox';
 import 'rc-checkbox/assets/index.css';
 
-function arrItmesToObjKeys(arr) {
-
-  const objArr = {};
-  arr.forEach(
-    (item) => {
-      objArr[item] = true;
-    });
-  return objArr;
-}
+// function arrItmesToObjKeys(arr) {
+//
+//   const objArr = {};
+//   arr.forEach(
+//     (item) => {
+//       objArr[item] = true;
+//     });
+//   return objArr;
+// }
 
 const styles = {
+  filtersContainer: {
+    height: '24vh',
+    overflow: 'scroll',
+  },
   checkBoxHomeWork: {
     padding: '2.5vh 0',
     marginLeft: '2vw',
@@ -38,51 +42,41 @@ const styles = {
       background: 'none',
     },
   },
+  pdfContainer: {
+    height: '60vh',
+    overflow: 'scroll',
+  },
 };
 
 class CheckBoxHomeWork extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      lessons: [],
-    };
-  }
 
-  func = (subject, value) => {
-    const arr = [];
-    arr.push(subject)
-    this.setState((prevState) => {
-      let newState = [];
-      if (value) {
-        newState = prevState.lessons.push(subject);
-      } else {
-        const index = this.state.lessons.indexOf(subject);
-        newState = prevState.lessons.splice(index, 1);
-      };
-      return newState;
-    });
-  }
+
+  handleCheckBoxClick = (subject, value) => {
+    this.props.onCheckBoxClick(subject, value);
+  };
 
   render() {
     const { classes, subjects } = this.props;
     return (
       <div className={classes.checkBoxHomeWork}>
-        {
-          subjects.map(subject => (
-            <div key={subject} className={classes.select}>
-              <Checkbox
-                checked={this.state.lessons.includes(subject)}
-                onChange={(e) => {
-                  this.func(subject, e.target.checked);
-                  console.log(this.state.lessons);
-                }}
-              />
-              <span>
-                {subject}
-              </span>
-            </div>
-          ))
-        }
+        <div className={classes.filtersContainer}>
+          {
+            subjects.map(subject => (
+              <div key={subject} className={classes.select}>
+                <Checkbox
+                  checked={this.props.lessons.includes(subject)}
+                  onChange={(e) => {
+                    this.handleCheckBoxClick(subject, e.target.checked);
+                  }}
+                />
+                <span>
+                  {subject}
+                </span>
+              </div>
+            ))
+          }
+        </div>
+        <div className={classes.pdfContainer} />
       </div>
     );
   }
@@ -90,7 +84,9 @@ class CheckBoxHomeWork extends Component {
 
 CheckBoxHomeWork.propTypes = {
   classes: PropTypes.object,
+  lessons: PropTypes.array,
   subjects: PropTypes.array,
+  onCheckBoxClick: PropTypes.func,
 };
 
 

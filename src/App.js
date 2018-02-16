@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import RegistrationForm from './components/RegistrationForm.js';
 import LoginForm from './components/LoginForm.js';
 import Teachers from './components/Teachers.js';
 import Homework from './components/Homework';
@@ -19,7 +18,6 @@ const Front = () => (
       <Route exact path="/marks" cpmponent={Marks} />
       <Route exact path="/teachers" component={Teachers} />
       <Route exact path="/login" component={LoginForm} />
-      <Route exact path="/registration" component={RegistrationForm} />
       <Route path="/" component={Schedule} />
     </Switch>
   </div>

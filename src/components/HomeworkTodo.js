@@ -70,6 +70,7 @@ const styles = {
 };
 
 class HomeworkTodo extends Component {
+
   componentDidMount() {
     this.props.onHomeworkClick(null, localStorage.getItem('sessionId'), !null);
   }
