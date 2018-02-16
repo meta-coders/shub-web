@@ -17,16 +17,17 @@ class Homework extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      lessons: arrOfHomeWorksToUniqSubjArr(this.props.homework),
+      lessons: [],
     };
   }
 
 
-
-  // componentWillUpdate() {
-  //   const arrSubj = arrOfHomeWorksToUniqSubjArr(this.props.homework)
-  //   this.setState({lessons: arrSubj});
-  // }
+  componentWillReceiveProps = (newProps) => {
+    console.log('Component Recived Props');
+    console.log(newProps);
+    const arrSubj = arrOfHomeWorksToUniqSubjArr(newProps.homework);
+    this.setState({ lessons: arrSubj });
+  }
 
   componentDidUpdate = () => {
     console.log(this.state.lessons);
